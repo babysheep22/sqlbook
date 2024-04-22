@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>도서 세부 소개 페이지</title>
+    <style>
+        /* 바디 css 시작 ----------------------------------------------------------------------- */
+        /* 상품등급 , 품질등급체크 */
+        .new_book1_1 {
+
+            display: inline-block;
+        }
+
+        /* 상품등급 */
+        #new_book_grade {
+            position: absolute;
+            top: 400px;
+            left: 300px;
+
+        }
+
+        /* 품질등급체크 */
+        #new_book_check {
+            position: absolute;
+            top: 400px;
+            left: 360px;
+            width: 100px;
+            height: 30px;
+            background-color: rgb(3, 19, 36);
+            color: #efeff2;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        #new_book_button1 {
+
+            width: 50px;
+            height: 30px;
+            background-color: rgb(86, 124, 165);
+            color: #efeff2;
+            text-align: center;
+            font-size: 12px;
+            border: none;
+        }
+
+        #new_book_button2 {
+
+            width: 100px;
+            height: 30px;
+            background-color: rgb(3, 19, 36);
+            color: #efeff2;
+            text-align: center;
+            font-size: 12px;
+            border: none;
+        }
+
+
+        /* 표지 위 제목 저자 등 */
+        #new_book_detail {
+            position: absolute;
+            top: 430px;
+            left: 300px;
+        }
+
+        /* 표지 위 제목 저자 등 테이블 오른쪽만 선 나오도록*/
+
+        .table_td {
+            border-right: 1px solid rgb(189, 189, 189);
+
+
+
+        }
+
+        /* 표지 위 제목 저자 출판사 등 글자색 */
+        .table_s {
+            color: rgb(189, 189, 189);
+        }
+
+        /* 표지 이미지 */
+        #detail_img {
+            position: absolute;
+            top: 550px;
+            left: 400px;
+            border: 1px solid rgb(189, 189, 189);
+
+        }
+
+        /* 책 디테일 소개: 분류, ISBN, 판매가 배송비 */
+        #detail_table_1 {
+            position: absolute;
+            top: 550px;
+            left: 650px;
+        }
+
+        /* 책 디테일 소개 > 테이블 높이 */
+        .table_tr {
+            height: 50px;
+        }
+
+        /* 책가격대: 최고가 최저가 > 테이블 위치 */
+        #detail_table_2 {
+            position: absolute;
+            top: 760px;
+            left: 650px;
+
+        }
+
+        /* 책가격대: 최고가 최저가 > 테이블 크기 */
+        #detail_table_2 td {
+            width: 100px;
+            height: 40px;
+            text-align: center;
+
+        }
+
+        /* 책가격대: 최고가 최저가 > 테이블 테두리선 굵기 크기 줄 합치기 */
+        #detail_table_2 table,
+        #detail_table_2 td,
+        #detail_table_2 tr {
+            border: 1px solid black;
+            border-collapse: collapse;
+
+        }
+
+        /* 책가격대: 최고가 최저가 > 배경색 */
+        #detail_table_2_1 {
+            background-color: #efeff2;
+        }
+
+        /* 판매자 책설명, 책 내용 등 소개 > 테이블 위치 */
+        #detail_table_3 {
+            position: absolute;
+            top: 900px;
+            left: 350px;
+            width: 800px;
+
+        }
+
+        /* 판매자 책설명 > 테이블 높이 */
+        #detail_table_3_tr1 {
+            height: 100px;
+        }
+
+        /* 판매자 책설명, 책 내용 등 소개 > 앞행 글자 굵기*/
+        .detail_table_3_td1 {
+            font-weight: bold;
+        }
+
+
+        /* 판매자 책설명, 책 내용 등 소개 > 뒷행 크기 및 아래쪽만 선나오도록 */
+        .detail_table_3_td2 {
+            width: 600px;
+            border-bottom: 1px solid rgb(189, 189, 189);
+        }
+
+        /* 판매자 정보 > 테이블 앞행 크기 및 배경색 */
+        .detail_table_4_td {
+            width: 120px;
+            height: 60px;
+            background-color: rgb(239, 229, 229);
+        }
+
+        /* 판매자 정보 > 테이블 뒷행 크기 */
+        #detail_table_4_td2 {
+            width: 150px;
+        }
+
+
+        .modal_new_book {
+            position: absolute;
+            top: 100px;
+            left: 300px;
+            width: 850px;
+            height: 1850px;
+            border: 1px solid rgb(189, 189, 189);
+        }
+
+        .close_btn_new_book {
+
+            font-size: 30px;
+            background-color: white;
+            border: 0;
+            position: absolute;
+            top: 10px;
+            left: 800px;
+        }
+
+        /* 바디 css 끝 ------------------------------------------------------------- */
+
+        
+    </style>
+
+
+</head>
+<!-- 바디 시작 ------------------------------------------------------------------------ -->
+
+<body>
+    <div id="container_new_book">
+        <div class="new_book1_1" id="new_book_grade">
+            <button id="new_book_button1">상급</button>
+        </div>
+        <div class="new_book1_1" id="new_book_check">
+            <button id="new_book_button2">품질등급체크</button>
+        </div>
+
+        <div>
+            <dialog class="modal_new_book">
+                <img src="..//project1/images/book_grade.png">
+                <form method="dialog">
+                    <button class="close_btn_new_book">x</button>
+                </form>
+            </dialog>
+        </div>
+
+        <script>
+            const modalBtn = document.querySelector("#new_book_button2");
+            const modal = document.querySelector(".modal_new_book");
+
+            modalBtn.addEventListener("click", () => {
+                modal.showModal()
+            });
+        </script>
+
+
+
+        <div id="new_book_detail">
+            <h3>깨진 틈이 있어야 그 사이로 빛이 들어온다</h3>
+            <table>
+                <tr class="table_td"><span class="table_s">저자</span><span>&nbsp&nbsp프리드리히 니체&nbsp</span></tr>
+                <tr class="table_td"><span class="table_s">&nbsp&nbsp출판사</span><span>&nbsp&nbsp랜덤하우스&nbsp</span></tr>
+                <tr class="table_td"><span class="table_s">&nbsp&nbsp출간일</span><span>&nbsp&nbsp2007.08.29&nbsp</span>
+                </tr>
+                <tr class="table_td"><span class="table_s">&nbsp&nbsp상품등록일</span><span>&nbsp&nbsp2024.04.12&nbsp</span>
+                </tr>
+            </table>
+        </div>
+
+        <div id="detail">
+            <div id="detail_img">
+                <img src="..//project1/images/newbook/newbook1.png" width="200px" height="290px">
+            </div>
+            <div id="detail_table_1">
+                <table>
+                    <tr class="table_tr">
+                        <td class="table_s">인문</td>
+                        <td>&nbsp&nbsp서양철학사&nbsp</td>
+                    </tr>
+                    <tr class="table_tr">
+                        <td class="table_s">ISBN</td>
+                        <td>&nbsp&nbsp978818181818&nbsp</td>
+                    </tr>
+                    <tr class="table_tr">
+                        <td class="table_s">판매가</td>
+                        <td>&nbsp&nbsp12,000원&nbsp</td>
+                    </tr>
+                    <tr class="table_tr">
+                        <td class="table_s">배송비</td>
+                        <td>&nbsp&nbsp3000원(판매자 상품 50,000원이상 무료 배송)&nbsp</td>
+                    </tr>
+                </table>
+            </div>
+            <div id="detail_table_2">
+                <table>
+                    <tr id="detail_table_2_1">
+                        <td>최고가</td>
+                        <td>평균가</td>
+                        <td>최저가</td>
+                    </tr>
+                    <tr>
+                        <td>8,400원</td>
+                        <td>4,700원</td>
+                        <td>1,000원</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div id="detail_table_3">
+            <table>
+                <tr id="detail_table_3_tr1">
+                    <td class="detail_table_3_td1">판매자 책 설명</td>
+                    <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                    <td class="detail_table_3_td2">작은 낙서, 책표지 일부 꾸겨짐</td>
+                </tr>
+                <tr id="detail_table_3_tr2">
+                    <td class="detail_table_3_td1">책소개</td>
+                    <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                    <td class="detail_table_3_td2"><br><br>
+
+                        철학자들의 철학자로 불리는 니체는 자신을 지키기 위해 고독을 선택했고, 깊은 사색으로 인생의 의미를 찾아내기 위해 애썼다. 이러한 이러한 니체의 태도가 담긴 책이 바로
+                        『깨진 틈이 있어야 그 사이로 빛이 들어온다(원제: 차라투스트라는 이렇게 말했다)』이다.
+                        이 책에서 니체는 자신의 분신이자 주인공인 차라투스트라를 통해 여러 메시지를 전한다. 그중에서도 지금 시대에 가장 울림이 깊은 메시지는 아마 “사람을 싫어해도 괜찮다”일
+                        것이다. 적당한 거리두기도 아니고 ‘싫어해도 괜찮다’는 말에 거부감을 느끼는 이도 있을 것이지만, 니체는 누군가와 잘 지내기 위해 자신의 자아를 무시하고 방치해 결국 자신을
+                        잃어버리는 사람들에게 경종을 울리고자 이 말을 남겼다. 모두에게 사랑받는 사람이 되기 위해 괴로워하는 것보다 남 없이도 살아갈 수 있는 충만한 개인의 삶을 살아가라고
+                        말이다.
+
+                        “나는 짐승들 사이보다 인간들 사이에 있는 것이 더 위험하다는 사실을 알게 되었다.”, “진정한 고독은 혼자일 때가 아닌, 둘이 있어도 외로울 때 찾아온다.”, “흙발로
+                        들어오는 사람과 사귀지 마라.” 등 책 속 차라투스트라의 외침은 100년이 지난 지금에도 인간관계로 고민하는 많은 사람의 공감을 얻고 있다.
+                        내가 혼자서도 잘 살아갈 수 있는 세상에서 남과도 함께 행복해질 수 있다고 믿는 지금의 세대에게 니체의 말은 시의적절한 삶의 메시지를 전하고 있다. 니체 스스로 자신이
+                        인류에게 보낸 가장 위대한 선물이라고 칭한 이 책을 통해 나와 세상의 적정거리를 찾는 방법을 발견하게 될 것이다.</td>
+                    <br>
+                    <br>
+                </tr>
+                <tr id="detail_table_3_tr3">
+                    <td class="detail_table_3_td1">판매자</td>
+                    <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                    <td class="detail_table_3_td2"><br><br>
+                        <span>사업자&nbsp&nbsp&nbsp&nbsp&nbsp</span><a
+                            href="https://www.bookoa.co.kr/minishop/main?store_id=5dea211ad652922fd08c8f57"><b>토리북스</b></a><br><br>
+                        <table>
+                            <tr>
+                                <td class="detail_table_4_td">&nbsp&nbsp배송비</td>
+                                <td>3500원</td>
+                                <td class="detail_table_4_td">&nbsp&nbsp배송방법</td>
+                                <td id="detail_table_4_td2">일반택배(평균 1일)</td>
+                            </tr>
+                            <tr>
+                                <td class="detail_table_4_td">&nbsp&nbsp거래실적</td>
+                                <td colspan="3">거래: 4,256건, 평점: 4.61점, 리뷰: 374건, 취소률: 1.41%</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="detail_table_4_td">&nbsp&nbsp군부대<br>&nbsp&nbsp배송여부</td>
+                                <td colspan="3">군부대(사서함) 주문건 배송가능</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="detail_table_4_td">&nbsp&nbsp환불,반품,<br>&nbsp&nbsp교환조건</td>
+                                <td colspan="3">구매 일주일 이후건은 무조건 반품환불 안됩니다.<br>
+                                    일주일 이전건 상식에 어긋나지 않는 한 반품 가능합니다.</td>
+                                <td></td>
+                                <td></td>
+                            </tr id="detail_table_4_tr4">
+                        </table>
+                        <br>
+                        <br>
+                    </td>
+                    <br>
+                    <br>
+                </tr>
+
+            </table>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+        </div>
+
+    </div>
+
+    <!-- 바디 끝------------------------------------------------------------------------------------------ -->
+
+   
+
+</body>
+
+
+
+
+
+</html>

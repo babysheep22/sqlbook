@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <details><summary value="1">Q&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp주문/결제
+        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp[포인트] 포인트는 어디서 확인하나요? </summary><p></p></details>
+
+
+        <div class="container">
+            <div class="row">
+                <form method="post" name="search" action="searchbbs.jsp">
+                    <table class="pull-right">
+                        <tr>
+                            <td><select class="form-control" name="searchField">
+                                    <option value="0">선택</option>
+                                    <option value="bbsTitle">제목</option>
+                                    <option value="userID">작성자</option>
+                            </select></td>
+                            <td><input type="text" class="form-control"
+                                placeholder="검색어 입력" name="searchText" maxlength="100"></td>
+                            <td><button type="submit" class="btn btn-success">검색</button></td>
+                        </tr>
+    
+                    </table>
+                </form>
+            </div>
+        </div>
+</body>
+</html>

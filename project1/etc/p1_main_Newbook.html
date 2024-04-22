@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 바디 css시작------------------------------------------------------------------------------------------------ */
+        .main_books {
+            position: absolute;
+            top: 720px;
+            left: 300px;
+            width: 100%;
+        }
+        
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        /* 새로 들어온 책 */
+               
+        .new_book_head {
+            position: absolute;
+            top: 10px;
+            width: 500px;
+        }
+
+
+        .new_book_h3 {
+            position: absolute;
+            left: 30px;
+        }
+
+        .new_book_ul {
+            position: absolute;
+            top: 5px;
+            left: 350px;
+            width: 1100px;
+            list-style: none;
+        }
+
+        .new_book_li {
+            width: 100px;
+            font-size: 15px;
+            display: block;
+            float: left;
+            /*위에 float:right가 있어서 써줌*/
+        }
+
+
+        .new_book_container {
+            position: absolute;
+            top: 70px;
+            left: 20px;
+            }
+
+        .new_book_intro {
+            width: 164px;
+            height: 297px;
+            padding: 5px 5px;
+            display: inline-block;
+
+
+        }
+
+        .new_book_intro img {
+            border: 1px solid rgb(189, 189, 189);
+            border-radius: 10px;
+        }
+
+        .new_book_intro_p {
+            width: 130px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        /* 많이 팔린 책 */
+
+        .best_book_head {
+            position: absolute;
+            top: 410px;
+            width: 500px;
+        }
+
+
+        .best_book_h3 {
+            position: absolute;
+            left: 30px;
+        }
+
+        .best_book_ul {
+            position: absolute;
+            top: 5px;
+            left: 350px;
+            width: 1100px;
+            list-style: none;
+
+        }
+
+        .best_book_li {
+            width: 100px;
+            font-size: 15px;
+            display: block;
+            float: left;
+            /*위에 float:right가 있어서 써줌*/
+
+
+        }
+
+        .best_book_container {
+            position: absolute;
+            top: 470px;
+            left: 20px;
+
+        }
+
+        .best_book_intro {
+            width: 164px;
+            height: 297px;
+            padding: 5px 5px;
+            display: inline-block;
+
+
+        }
+
+       
+        .best_book_intro img {
+            border: 1px solid rgb(189, 189, 189);
+            border-radius: 10px;
+        }
+
+        .best_book_intro_p {
+            width: 130px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    </style>
+    <!-- 바디 css 끝 -->
+</head>
+
+<body>
+    <!-- 바디시작---------------------------------------------------------------------------------------------------------------------------- -->
+
+    <!-- 새로 등록된 도서 -->
+    <div class="main_books">
+        <div class=".new_book_head">
+            <h3 class="new_book_h3">새로 등록된 도서</h3>
+            <ul class="new_book_ul">
+                <li><a href="#" class="new_book_li">소설</a></l1>
+                <li><a href="#" class="new_book_li">고서/희귀본</a></l1>
+                <li><a href="#" class="new_book_li">종교</a></l1>
+                <li><a href="#" class="new_book_li">만화</a></l1>
+                <li><a href="#" class="new_book_li">문학/인물</a></l1>
+                <li><a href="#" class="new_book_li">더보기</a></l1>
+            </ul>
+        </div>
+
+
+        <div class="new_book_container">
+            <div class="new_book_intro" id="new_book_intro1"><a href="p1_bookIntro_1.html" class="new_book_intro"
+                    style="color: inherit;">
+                    <img src="..//project1/images/newbook/newbook1.png" width="130px" height="178px">
+                    <p class="new_book_intro_p">깨진 틈이 있어야 그 사이로 빛이 들어온다</p>
+                    <p>5,000원</p>
+                </a></div>
+            <div class="new_book_intro" id="new_book_intro2"><a href="#" class="new_book_intro" style="color: inherit;">
+                    <img src="..//project1/images/newbook/newbook2.png" width="130px" height="178px">
+                    <p class="new_book_intro_p">우리는 마침내 같은 문장에서 만난다</p>
+                    <p>2,000원</p>
+                </a></div>
+
+            <div class="new_book_intro" id="new_book_intro3"><a href="#" class="new_book_intro" style="color: inherit;">
+                    <img src="..//project1/images/newbook/newbook3.png" width="130px" height="178px">
+                    <p class="new_book_intro_p">구의 증명</p>
+                    <p>3,000원</p>
+                </a></div>
+
+            <div class="new_book_intro" id="new_book_intro4"><a href="#" class="new_book_intro" style="color: inherit;">
+                    <img src="..//project1/images/newbook/newbook4.png" width="130px" height="178px">
+                    <p class="new_book_intro_p">C.S 루이스</p>
+                    <p>2,500원</p>
+                </a></div>
+
+            <div class="new_book_intro" id="new_book_intro5"><a href="#" class="new_book_intro" style="color: inherit;">
+                    <img src="..//project1/images/newbook/newbook5.png" width="130px" height="178px">
+                    <p class="new_book_intro_p">기업분석 처음공부</p>
+                    <p>4,200원</p>
+                </a></div>
+
+            <div class="new_book_intro" id="new_book_intro6"><a href="#" class="new_book_intro" style="color: inherit;">
+                    <img src="..//project1/images/newbook/newbook6.png" width="130px" height="178px">
+                    <p class="new_book_intro_p">프롬프트 디자인</p>
+                    <p>5,100원</p>
+                </a></div>
+
+            <div class="new_book_intro" id="new_book_intro7"><a href="#" class="new_book_intro" style="color: inherit;">
+                    <img src="..//project1/images/newbook/newbook7.png" width="130px" height="178px">
+                    <p class="new_book_intro_p">미움받을 용기</p>
+                    <p>3,900원</p>
+                </a></div>
+        </div>
+
+
+
+
+        <!-- 가장 많이 팔린 도서 -->
+        <div class="best_book_head">
+            <h3 class="best_book_h3">가장 많이 팔린 도서</h3>
+            <ul class="best_book_ul">
+                <li><a href="#" class="best_book_li">문학/인물</a></l1>
+                <li><a href="#" class="best_book_li">만화</a></l1>
+                <li><a href="#" class="best_book_li">경영/경제</a></l1>
+                <li><a href="#" class="best_book_li">역사</a></l1>
+                <li><a href="#" class="best_book_li">자기계발</a></l1>
+                <li><a href="#" class="best_book_li">더보기</a></l1>
+            </ul>
+        </div>
+
+
+        <div class="best_book_container">
+            <div class="best_book_intro" id="best_book_intro1"><a href="..//project1/new_book_1.html"
+                    class="best_book_intro" style="color: inherit;">
+                    <img src="..//project1/images/newbook/newbook1.png" width="130px" height="178px">
+                    <p class="best_book_intro_p">깨진 틈이 있어야 그 사이로 빛이 들어온다</p>
+                    <p>5,000원</p>
+                </a></div>
+            <div class="best_book_intro" id="best_book_intro2"><a href="#" class="best_book_intro"
+                    style="color: inherit;">
+                    <img src="..//project1/images/newbook/newbook2.png" width="130px" height="178px">
+                    <p class="best_book_intro_p">우리는 마침내 같은 문장에서 만난다</p>
+                    <p>2,000원</p>
+                </a></div>
+
+            <div class="best_book_intro" id="new_book_intro3"><a href="#" class="best_book_intro"
+                    style="color: inherit;">
+                    <img src="..//project1/images/newbook/newbook3.png" width="130px" height="178px">
+                    <p class="best_book_intro_p">구의 증명</p>
+                    <p>3,000원</p>
+                </a></div>
+
+            <div class="best_book_intro" id="best_book_intro4"><a href="#" class="best_book_intro"
+                    style="color: inherit;">
+                    <img src="..//project1/images/newbook/newbook4.png" width="130px" height="178px">
+                    <p class="best_book_intro_p">C.S 루이스</p>
+                    <p>2,500원</p>
+                </a></div>
+
+            <div class="best_book_intro" id="best_book_intro5"><a href="#" class="best_book_intro"
+                    style="color: inherit;">
+                    <img src="..//project1/images/newbook/newbook5.png" width="130px" height="178px">
+                    <p class="best_book_intro_p">기업분석 처음공부</p>
+                    <p>4,200원</p>
+                </a></div>
+
+            <div class="best_book_intro" id="best_book_intro6"><a href="#" class="best_book_intro"
+                    style="color: inherit;">
+                    <img src="..//project1/images/newbook/newbook6.png" width="130px" height="178px">
+                    <p class="best_book_intro_p">프롬프트 디자인</p>
+                    <p>5,100원</p>
+                </a></div>
+
+            <div class="best_book_intro" id="best_book_intro7"><a href="#" class="best_book_intro"
+                    style="color: inherit;">
+                    <img src="..//project1/images/newbook/newbook7.png" width="130px" height="178px">
+                    <p class="best_book_intro_p">미움받을 용기</p>
+                    <p>3,900원</p>
+                </a></div>
+        </div>
+    </div>
+
+    <!-- 바디끝 ------------------------------------------------------------------------------------------>
+</body>
+
+</html>
