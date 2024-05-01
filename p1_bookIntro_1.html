@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>도서 상세정보 소개 페이지</title>
+    <style>
+        /* 바디 css 시작 ----------------------------------------------------------------------- */
+
+        #container_book {
+            position: absolute;
+            top: 240px;
+            left: 600PX;
+        }
+
+        /* 표지 위 제목 저자 등 */
+        #book_title {
+            position: absolute;
+            top: 30px;
+            left: 100px;
+            width: 700px;
+        }
+
+
+        /* 표지 위 제목 저자 출판사 등 글자색 */
+        .book_title_s {
+            color: rgb(189, 189, 189);
+        }
+
+        /* 표지 이미지 */
+        #book_img {
+            position: absolute;
+            top: 180px;
+            left: 150px;
+            border: 1px solid rgb(189, 189, 189);
+            border-radius: 10PX;
+
+        }
+
+        /* 책 디테일 소개: 분류, ISBN, 판매가 배송비 품질 등*/
+        #book_detail {
+            position: absolute;
+            top: 160px;
+            left: 650px;
+            width: 450px;
+        }
+
+        #book_detail a {
+            text-decoration: none;
+            color: blueviolet;
+            font-weight: bold;
+        }
+
+        .book_detail_s {
+            color: rgb(189, 189, 189);
+        }
+
+        .book_detail_s2 {
+            color: black;
+        }
+
+        /* 장바구니/바로구매 버튼 */
+        #book_basket_sell {
+            position: absolute;
+            top: 600px;
+            left: 650px;
+            width: 300px;
+        }
+
+        #book_basket_btn {
+            width: 250px;
+            background-color: rgb(13, 153, 255);
+            color: white;
+            font-size: 20px;
+            margin: 10px;
+            border: 0;
+        }
+
+        #book_sell_btn {
+            width: 250px;
+            background-color: rgb(255, 13, 13);
+            color: white;
+            font-size: 20px;
+            margin: 10px;
+            border: 0;
+        }
+
+
+        /* 책 디테일 소개 > 테이블 높이 */
+        .table_tr {
+            height: 50px;
+        }
+
+
+
+        /* 판매자 책설명, 책 내용 등 소개 > 테이블 위치 */
+        #detail_table {
+            position: absolute;
+            top: 700px;
+            left: 150px;
+            width: 900px;
+
+        }
+
+        /* 판매자 책설명 > 테이블 높이 */
+        #detail_table_tr1 {
+            height: 100px;
+        }
+
+        /* 판매자 책설명, 책 내용 등 소개 > 앞행 글자 굵기*/
+        .detail_table_td1 {
+            font-weight: bold;
+        }
+
+
+        /* 판매자 책설명, 책 내용 등 소개 > 뒷행 크기 및 아래쪽만 선나오도록 */
+        .detail_table_td2 {
+            width: 700px;
+            border-bottom: 1px solid rgb(189, 189, 189);
+        }
+
+        /* 별점 리뷰 */
+        .book_intro_review {
+            position: absolute;
+            top: 1350px;
+            left: 150px;
+        }
+        
+        #book_intro_star fieldset{
+        display: inline-block;
+        direction: rtl;  /*정렬을 right에서 left로*/
+        border:0;
+    }
+    #book_intro_star fieldset legend{
+        text-align: right;
+    }
+    #book_intro_star input[type=radio]{
+        display: none;
+        position: absolute;
+        top: -300px;
+    }
+    #book_intro_star label{
+        font-size: 3em;
+        color: transparent;  /*transparent 별을 투명하게*/
+        text-shadow: 0 0 0 #f0f0f0;
+    }
+    #book_intro_star label:hover ~ label{
+        text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+    }
+    #book_intro_star label:hover {
+        text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+    }
+    #book_intro_star input[type=radio]:checked ~ label{
+        text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+    }
+    .book_intro_review_box {
+            width: 900px;
+            box-sizing: border-box;
+            display: inline-block;
+            margin: 15px 0;
+            background: #F3F4F8;
+            border: 0;
+            border-radius: 10px;
+            height: 100px;
+            resize: none;
+            padding: 15px;
+            font-size: 13px;
+            font-family: sans-serif;
+        }
+
+        .book_intro_review_btn {
+            display: block;
+            width: 900px;
+            font-weight: bold;
+            border: 0;
+            border-radius: 10px;
+            max-height: 50px;
+            padding: 15px 0;
+            font-size: 1.1em;
+            text-align: center;
+            background: bisque;
+        }
+
+
+
+        /* 바디 css 끝 ------------------------------------------------------------- */
+    </style>
+
+
+</head>
+
+<!-- 바디 시작 ------------------------------------------------------------------------ -->
+
+<body>
+    <div id="container_book">
+        <div id="book_title">
+            <h1>깨진 틈이 있어야 그 사이로 빛이 들어온다</h1>
+            <p><span class="book_title_s">저자</span><span>&nbsp&nbsp프리드리히 니체&nbsp</span>
+                <span class="book_title_s">&nbsp&nbsp출판사</span><span>&nbsp&nbsp랜덤하우스&nbsp</span>
+                <span class="book_title_s">&nbsp&nbsp출간일</span><span>&nbsp&nbsp2007.08.29&nbsp</span>
+                <span class="book_title_s">&nbsp&nbsp상품등록일</span><span>&nbsp&nbsp2024.04.12&nbsp</span>
+            </p>
+        </div>
+
+        <div id="book_img">
+            <img src="..//project1/images/newbook/newbook1.png" width="400px" height="500px">
+        </div>
+        <div id="book_detail">
+            <p class="book_detail_s">분 야<span class="book_detail_s2">&nbsp&nbsp인문 : 서양철학사&nbsp</span></p>
+            <br>
+            <p class="book_detail_s">ISBN<span class="book_detail_s2">&nbsp&nbsp978818181818&nbsp</span></p>
+            <br>
+            <p class="book_detail_s">판매가<span class="book_detail_s2">&nbsp&nbsp4,000원&nbsp</span></p>
+            <br>
+            <p class="book_detail_s">정 가<span class="book_detail_s2">&nbsp&nbsp15,000원&nbsp</span></p>
+            <br>
+            <p class="book_detail_s">배송비<span class="book_detail_s2">&nbsp&nbsp3000원(판매자 상품 50,000원이상 무료 배송)&nbsp</span>
+            </p>
+            <br>
+            <p class="book_detail_s">품질등급<span class="book_detail_s2">&nbsp&nbsp상급&nbsp&nbsp&nbsp&nbsp&nbsp</span>
+                <button class="book_detail_s_btn"><a
+                        href="..//project1/p1_needs_info_book_grade.html">품질등급기준</a></button></td>
+            </p>
+        </div>
+
+        <div id="book_basket_sell">
+            <div><a href="#"><button id="book_basket_btn">장바구니</button></a></div>
+            <div><a href="#"><button id="book_sell_btn">바로구매</button></a></div>
+        </div>
+
+        <div id="detail_table">
+            <table>
+                <tr id="detail_table_tr1">
+                    <td class="detail_table_td1">책 설명</td>
+                    <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                    <td class="detail_table_td2">작은 낙서, 책표지 일부 꾸겨짐</td>
+                </tr>
+                <tr id="detail_table_tr2">
+                    <td class="detail_table_td1">책소개</td>
+                    <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                    <td class="detail_table_td2"><br><br>
+
+                        <p>철학자들의 철학자로 불리는 니체는 자신을 지키기 위해 고독을 선택했고, 깊은 사색으로 인생의 의미를 찾아내기 위해 애썼다. 이러한 이러한 니체의 태도가 담긴 책이 바로
+                            『깨진 틈이 있어야 그 사이로 빛이 들어온다(원제: 차라투스트라는 이렇게 말했다)』이다.</p>
+
+                        <p>이 책에서 니체는 자신의 분신이자 주인공인 차라투스트라를 통해 여러 메시지를 전한다. 그중에서도 지금 시대에 가장 울림이 깊은 메시지는 아마 “사람을 싫어해도
+                            괜찮다”일
+                            것이다. 적당한 거리두기도 아니고 ‘싫어해도 괜찮다’는 말에 거부감을 느끼는 이도 있을 것이지만, 니체는 누군가와 잘 지내기 위해 자신의 자아를 무시하고 방치해 결국
+                            자신을
+                            잃어버리는 사람들에게 경종을 울리고자 이 말을 남겼다. 모두에게 사랑받는 사람이 되기 위해 괴로워하는 것보다 남 없이도 살아갈 수 있는 충만한 개인의 삶을 살아가라고
+                            말이다.</p>
+
+                        <p>“나는 짐승들 사이보다 인간들 사이에 있는 것이 더 위험하다는 사실을 알게 되었다.”, “진정한 고독은 혼자일 때가 아닌, 둘이 있어도 외로울 때 찾아온다.”,
+                            “흙발로
+                            들어오는 사람과 사귀지 마라.” 등 책 속 차라투스트라의 외침은 100년이 지난 지금에도 인간관계로 고민하는 많은 사람의 공감을 얻고 있다.</p>
+
+                        <p>내가 혼자서도 잘 살아갈 수 있는 세상에서 남과도 함께 행복해질 수 있다고 믿는 지금의 세대에게 니체의 말은 시의적절한 삶의 메시지를 전하고 있다. 니체 스스로 자신이
+                            인류에게 보낸 가장 위대한 선물이라고 칭한 이 책을 통해 나와 세상의 적정거리를 찾는 방법을 발견하게 될 것이다.</p>
+                    </td>
+                    <br>
+                    <br>
+                </tr>
+            </table>
+        </div>
+
+        <!-- 별점 리뷰 -->
+        <div class="book_intro_review">
+            <form name="myform" id="book_intro_star" method="post">
+                <fieldset>
+                    <span class="book_intro_star_select">별점을 선택해주세요</span><span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp리뷰 일시</span>
+                    <input type="radio" name="reviewStar" value="5" id="rate1"><label
+                        for="rate1">★</label>
+                    <input type="radio" name="reviewStar" value="4" id="rate2"><label
+                        for="rate2">★</label>
+                    <input type="radio" name="reviewStar" value="3" id="rate3"><label
+                        for="rate3">★</label>
+                    <input type="radio" name="reviewStar" value="2" id="rate4"><label
+                        for="rate4">★</label>
+                    <input type="radio" name="reviewStar" value="1" id="rate5"><label
+                        for="rate5">★</label>
+                    
+                </fieldset>
+                <div>
+                    <textarea class="book_intro_review_box" placeholder="리뷰 내용을 작성해주세요."></textarea>
+            
+                <input type="submit" class="book_intro_review_btn" value="리뷰 등록" />
+                
+                </div>
+                           
+        </div>
+
+    </div>
+
+
+
+    <!-- 바디 끝------------------------------------------------------------------------------------------ -->
+
+
+
+
+
+
+
+</body>
+
+
+
+
+
+</html>
