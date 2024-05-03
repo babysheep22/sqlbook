@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상단매뉴</title>
+    <style>
+        @import url(/new/css/main.css);
+    </style>
+</head>
+
+<body>
+    <form>
+        <div class="book_wrapper">
+            <header>
+                <div class="book_logo"><a href="https://www.naver.com" style="font-size: 80px;">●●</a></div> <!--리북 로고 클릭시 홈페이지 주소-->
+                <div class="top-spans">
+                    <ul>
+                        <li><a href="#"><img src="/new/image/jjim.png" class="topjj"></a></li><!--찜 목록-->
+                        <li><a href="#"><img src="/new/image/j.png" class="topj"></a></li><!--장바구니-->
+                        <li><a href="./yeil_join.html" style="font-size: 15px;">회원가입</a></li><!--회원가입-->
+                        <li class="topgo"><a href="#"><img src="/new/image/go.png"></a></li> <!--고객센터-->
+                    </ul>
+                </div>
+                <div class="top-left">
+                    <ul>
+                        <li><a href="#">이벤트</a></li>
+                        <li><a href="#">베스트셀러</a></li>
+                    </ul>
+                </div>
+                <nav class="navi">
+                    <ul>
+                        <li><a href="#">베스트도서</a></li>
+                        <li><a href="#"><span>리뷰</span></a></li>
+                        <li><a href="#">이벤트</a></li>
+                        <li><a href="#">도서요청 / 매입신청</a></li>
+                    </ul>
+                </nav>
+            </header>
+            <input type="checkbox" id="btn" />
+            <label for="btn" id="btn_label" class="logo_hover" onmouseover="changeImage('/new/image/opnebook5.png')"
+                onmouseout="changeImage('/new/image/bb.png')">
+                <img src="/new/image/bb.png" id="logo_image">
+            </label>
+            <div id="move_box" class="hidden-menu" onmouseover="changeImage('/new/image/opnebook5.png')"
+                onmouseout="changeImage('/new/image/bb.png')">
+                <h3 style="font-weight: bold; color: #fff; margin-top: 15px;">분야별 찾기</h3> <!--히든매뉴----------------------->
+                <div class="move_menu">
+                    <ul style="float: left;   display: block;">
+                        <li style="font-size: 15px; font-weight: bold; margin-left: 30px; width: 120px;"><a href="#"
+                                style="line-height: 80px;"><span class="my_k">소설</span></a></li>
+                        <li style="font-size: 15px; font-weight: bold; margin-left: 30px; width: 120px;"><a href="#"
+                                style="line-height: 80px;"><span class="my_k">컴퓨터</span></a></li>
+                        <li style="font-size: 15px; font-weight: bold; margin-left: 30px; width: 120px;"><a href="#"
+                                style="line-height: 80px;"><span class="my_k">종교</span></a></li>
+                        <li style="font-size: 15px; font-weight: bold; margin-left: 30px; width: 120px;"><a href="#"
+                                style="line-height: 80px;"><span class="my_k">자격증/취업</span></a></li>
+                        <li style="font-size: 15px; font-weight: bold; margin-left: 30px; width: 120px;"><a href="#"
+                                style="line-height: 80px;"><span class="my_k">역사/문화</span></a></li>
+                    </ul>
+                    <ul style="float: left; display: block; ">
+                        <li style="font-size: 15px; font-weight: bold; margin-left: 30px; width: 120px;"><a href="#"
+                                style="line-height: 80px;"><span class="my_k">만화</span></a></li>
+                        <li style="font-size: 15px; font-weight: bold; margin-left: 30px; width: 120px;"><a href="#"
+                                style="line-height: 80px;"><span class="my_k">성인</span></a></li>
+                        <li style="font-size: 15px; font-weight: bold; margin-left: 30px; width: 120px;"><a href="#"
+                                style="line-height: 80px;"><span class="my_k">잡지</span></a></li>
+                        <li style="font-size: 15px; font-weight: bold; margin-left: 30px; width: 120px;"><a href="#"
+                                style="line-height: 80px;"><span class="my_k">심리/교육</span></a></li>
+                        <li style="font-size: 15px; font-weight: bold; margin-left: 30px; width: 120px;"><a href="#"
+                                style="line-height: 80px;"><span class="my_k">사회/정치</span></a></li>
+                    </ul>
+                    <ul style="float: left; display: block;">
+                        <li style="font-size: 15px; font-weight: bold; margin-left: 30px; width: 120px;"><a href="#"
+                                style="line-height: 80px;"><span class="my_k">과학</span></a></li>
+                        <li style="font-size: 15px; font-weight: bold; margin-left: 30px; width: 120px;"><a href="#"
+                                style="line-height: 80px;"><span class="my_k">언어</span></a></li>
+                        <li style="font-size: 15px; font-weight: bold; margin-left: 30px; width: 120px;"><a href="#"
+                                style="line-height: 80px;"><span class="my_k">취미</span></a></li>
+                        <li style="font-size: 15px; font-weight: bold; margin-left: 30px; width: 120px;"><a href="#"
+                                style="line-height: 80px;"><span class="my_k">문학/인물</span></a></li>
+                        <li style="font-size: 15px; font-weight: bold; margin-left: 30px; width: 120px;"><a href="#"
+                                style="line-height: 80px;"><span class="my_k">가정/건강</span></a></li>
+                    </ul>
+                    <ul style="float: left; display: block;">
+                        <li style="font-size: 15px; font-weight: bold; margin-left: 30px; width: 120px;"><a href="#"
+                                style="line-height: 80px;"><span class="my_k">패션</span></a></li>
+                        <li style="font-size: 15px; font-weight: bold; margin-left: 30px; width: 120px;"><a href="#"
+                                style="line-height: 80px;"><span class="my_k">기타</span></a></li>
+                        <li style="font-size: 15px; font-weight: bold; margin-left: 30px; width: 120px;"><a href="#"
+                                style="line-height: 80px;"><span class="my_k">법학</span></a></li>
+                        <li style="font-size: 15px; font-weight: bold; margin-left: 30px; width: 120px;"><a href="#"
+                                style="line-height: 80px;"><span class="my_k">초/중/고</span></a></li>
+                        <li style="font-size: 15px; font-weight: bold; margin-left: 30px; width: 120px;"><a href="#"
+                                style="line-height: 80px;"><span class="my_k">아동/유아</span></a></li>
+                    </ul>
+                    <ul style="float: left; display: block;">
+                        <li style="font-size: 15px; font-weight: bold; margin-left: 30px; width: 120px;"><a href="#"
+                                style="line-height: 80px;"><span class="my_k">입력</span></a></li>
+                        <li style="font-size: 15px; font-weight: bold; margin-left: 30px; width: 120px;"><a href="#"
+                                style="line-height: 80px;"><span class="my_k">입력</span></a></li>
+                        <li style="font-size: 15px; font-weight: bold; margin-left: 30px; width: 120px;"><a href="#"
+                                style="line-height: 80px;"><span class="my_k">입력</span></a></li>
+                        <li style="font-size: 15px; font-weight: bold; margin-left: 30px; width: 120px;"><a href="#"
+                                style="line-height: 80px;"><span class="my_k">입력</span></a></li>
+                        <li style="font-size: 15px; font-weight: bold; margin-left: 30px; width: 120px;"><a href="#"
+                                style="line-height: 80px;"><span class="my_k">입력</span></a></li>
+                    </ul>
+                </div>
+            </div>
+            <a href="#"><img src="/new/image/nvi.png" class="back"></a> <!--네비게이션 이미지-->
+            <a href="#"><img src="/new/image/nvi.png" class="back"></a>
+            <a href="#"><img src="/new/image/nvi.png" class="back2"></a>
+            <a href="#"><img src="/new/image/nvi.png" class="back2"></a>
+            <a href="#"><img src="/new/image/nvi.png" class="back3"></a>
+            <a href="#"><img src="/new/image/nvi.png" class="back3"></a>
+            <a href="#"><img src="/new/image/lux.png" class="back4"></a>
+            <img src="/new/image/c.png" class="back5">
+            <a href="#"><img src="/new/image/home (2).png" class="back6"></a>
+            <div class="search">
+                <input type="text" id="text" name="search" placeholder="검색어를 입력하세요" onkeydown="entersearch()">
+                <button name="search" onclick="myFunction()" class="back8"
+                    style="background-color: rgba(0, 0, 0, 0);"><img src="/new/image/do.png" class="back7"></button>
+            </div>
+            <div>
+                <class="view">
+            </div>
+            <input type="checkbox" id="btn_con" style="overflow: hidden;" />
+            <label for="btn_con" id="btn_label_con"><img src="/new/image/loginwh.png"></label>
+            <div id="move_box_con" class="hidden-menu">
+                <h6 style="font-weight: bold; color: #fff;"></h6>
+                <div class="move_menu">
+                    <ul class="hime">
+                        <li><a href="#" style="font-size: 15px; color: rgb(0, 0, 0); font-weight: bold;"><span
+                                    class="my">마이페이지</span></a> <!--top 네비게이션 사람모양 히든매뉴----------------------------------------->
+                        </li>
+                        <li><a href="#" style="font-size: 15px; color: rgb(0, 0, 0); font-weight: bold;"><span
+                                    class="my">주문조회</span></a>
+                        </li>
+                        <li><a href="/new/yeil_login 완성본최종 copy.html"
+                                style="font-size: 15px; color: rgb(0, 0, 0); font-weight: bold;"><span
+                                    class="my">로그인</span></a></li>
+                    </ul>
+                </div>
+            </div>
+    </form>
+    <!--분리선-->
+</div>
+
+
+<ul id="new_book_ul">
+    <div class="new_book3">
+    <li><a href="#" class="new_book_li">더보기</a></l1>
+    <li><a href="#" class="new_book_li">고서/희귀본</a></l1>
+    <li><a href="#" class="new_book_li">종교</a></l1>
+    <li><a href="#" class="new_book_li">만화</a></l1>
+    <li><a href="#" class="new_book_li">문학/인물</a></l1>
+    <li><a href="#" class="new_book_li">소설</a></l1>
+        <li class="new_book_li" style="font-size: 22px; font-weight: bold;" >새로운 도서</li>
+    </div>
+</ul>
