@@ -5,26 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-
-
-        
-        .booksystem{
-        position: relative;     
-        margin-top: 200px;
-        width: 1200px;
-        margin: 50px auto;
-        display: block;
-        align-items: center;
+        .booksystem {
+            position: relative;
+            margin-top: 200px;
+            width: 1200px;
+            margin: 50px auto;
+            display: block;
+            align-items: center;
         }
 
-        .booksystem h2{
+        .booksystem h2 {
             text-align: center;
         }
 
         .booksystem ul {
             list-style: none;
         }
-            
+
         .booksystem label {
             font-weight: bold;
         }
@@ -33,9 +30,18 @@
             line-height: 50px;
             text-align: center;
         }
-        .booksystem
 
-        
+        label {
+            position: absolute;
+            top: 400px;
+            left: 500px;
+        }
+
+        #introduce {
+            position: absolute;
+            top: 500px;
+            left: 500px;
+        }
     </style>
 </head>
 
@@ -65,21 +71,22 @@
                     <label for="listprice">정가</label>
                     <input type="text" id="listprice">
                 </li>
+                <li>
+                    <label for="kategory1">카테고리</label>
+                    <select id="kategory1">
+                        <option value="korean" selected>국내소설</option>
+                        <option value="foreign">외국 소설</option>
+                        <option value="chinese">중국 소설</option>
+                        <option value="fantasy">판타지</option>
+                    </select>
+                </li>
             </ul>
-            
-            <label for="kategory1">카테고리</label>
-            <select id="kategory1">
-                <option value="korean" selected>국내소설</option>
-                <option value="foreign">외국 소설</option>
-                <option value="chinese">중국 소설</option>
-                <option value="fantasy">판타지</option>
-            </select>
-            
-            <label for="introduce">책 소개문</label><br>
-            <textarea name="책 소개문" id="introduce" cols="30" rows="10"></textarea>
+                <label for="introduce">책 소개문</label><br>
+                <textarea name="책 소개문" id="introduce" cols="30" rows="10"></textarea>
 
         </form>
     </div>
 
 </body>
+
 </html>
