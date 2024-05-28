@@ -1,0 +1,261 @@
+{{>layouts/header}}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>도서 목록 보기</title>
+    <style>
+        body {
+          background-color: white;
+        }
+
+        a {
+          text-decoration: none;
+        }
+
+
+        /* 왼쪽 메뉴창 부분 */
+
+        #control_container {
+          position: absolute;
+          top: 240px;
+          left: 600px;
+        }
+
+
+        a {
+          color: black;
+        }
+
+        #control_2 {
+          position: absolute;
+          top: 50px;
+        }
+
+
+        #control_2_p {
+
+          width: 160px;
+          height: 120px;
+          border-bottom: 1px solid rgb(189, 189, 189);
+          background-color: #e90fc5;
+          text-align: center;
+        }
+
+        #control_2_p p {
+          font-size: 20px;
+          color: white;
+        }
+
+        .control_2_1 {
+          width: 160px;
+          height: 40px;
+          border-bottom: 1px solid #e90fc5;
+          padding: 20px 0 0 0;
+        }
+
+
+
+        /*  메인 부분 */
+
+        .Resiter_container {
+          position: absolute;
+          top: 50px;
+          left: 250px;
+        }
+
+        .page_title {
+          width: 240px;
+          height: 50px;
+          background-color: rgb(72, 199, 21);
+          color: white;
+          border-radius: 10px;
+        }
+
+        .page_title span {
+          position: absolute;
+          top: 10px;
+          font-size: 20px;
+        }
+
+        .title_click {
+        color: red;
+        }
+
+        .next_btn1 {
+          width: 180px;
+          height: 30px;
+          background-color: red;
+          border-radius: 10px;
+          border: 0;
+          font-size: 15px;
+          color: rgb(244, 239, 239);
+        }
+
+        .next_btn2 {
+          width: 180px;
+          height: 30px;
+          background-color: rgb(255, 0, 242);
+          border-radius: 10px;
+          border: 0;
+          font-size: 15px;
+          color: rgb(244, 239, 239);
+        }
+
+        .next_btn3 {
+          width: 180px;
+          height: 30px;
+          background-color: rgb(35, 22, 151);
+          border-radius: 10px;
+          border: 0;
+          font-size: 15px;
+          color: rgb(244, 239, 239);
+        }
+
+
+        table,
+        tr,
+        td {
+          border: 1px solid rebeccapurple;
+          border-collapse: collapse;
+        }
+
+        table {
+          width: 1200px;
+          border: 5px solid rebeccapurple;
+
+        }
+
+        td {
+          width: 200px;
+        }
+
+        tr {
+          height: 50px;
+        }
+
+        table span {
+          color: rgb(23, 136, 139);
+        }
+
+        .book_title {
+        font-size: 20px;
+        color: black;
+        font-weight: bold;}
+    </style>
+</head>
+
+<body>
+<div id="control_container">
+
+    <!-- 왼쪽 메뉴 부분 -->
+    <div id="control_1">
+        <a href="#">홈</a> >
+        <a href="#">관리자페이지</a> >
+        <a href="#">상품관리</a> >
+        <a href="#">도서 목록 조회</a>
+    </div>
+
+
+    <div id="control_2">
+        <div id="control_2_p">
+            <br>
+            <p>관리자페이지</p>
+        </div>
+        <div class="control_2_1">
+            <a href="#">상품관리</a>
+        </div>
+        <div class="control_2_1">
+            <a href="#">회원관리</a>
+        </div>
+        <div class="control_2_1">
+            <a href="#">리뷰관리</a>
+        </div>
+        <div class="control_2_1">
+            <a href="#">일대일문의관리</a>
+        </div>
+        <div class="control_2_1">
+            <a href="#">질문및답변관리</a>
+        </div>
+    </div>
+
+
+    <!-- 메인부분 -->
+    <form class="Resiter_container" action="/books/create" method="post">
+        <div class="page_title">
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;도서 목록 조회</span>
+        </div>
+        <h3>도서 정보를 수정하거나 도서를 삭제하려면 <span class="title_click">제목을 클릭</span>하세요.</h3>
+
+        <br>
+        <br>
+        <div class="next_btn">
+            <a href="/books/register">
+                <button type="button" class="next_btn1">도서등록
+                    바로가기
+                </button>
+            </a>
+        </div>
+        <br>
+        <br>
+
+
+        {{#registerList}}
+            <table>
+
+
+                <tr>
+                    <td colspan="4" class="admin_title">운영자<a href="books/{{id}}"><span
+                            class="book_title">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{book_title}}</span></a>({{book_id}})
+                    </td>
+                </tr>
+                <tr>
+                    <td rowspan="4"></td>
+                    <td>&nbsp;<span>작가:> </td>
+                    <td>&nbsp;<span>출판사:</span></td>
+                    <td>&nbsp;<span>출판일:</span></td>
+                </tr>
+                <tr>
+                    <td>&nbsp;<span>대주제:</span></td>
+                    <td>&nbsp;<span>소주제:</span></td>
+                    <td>&nbsp;<span>도서등급:</span></td>
+                </tr>
+                <tr>
+                    <td>&nbsp;<span>판매가:</span></td>
+                    <td>&nbsp;<span>정가:</td>
+
+                </tr>
+                <tr>
+                    <td>&nbsp;<span>매입가:</span> </td>
+                    <td>&nbsp;<span>등록일:</span></td>
+                </tr>
+                <tr>
+                    <td colspan="4">표지 약간 훼손 <br> 속지 얼눅짐</td>
+                </tr>
+                <tr>
+                    <td colspan="4">미국선생님이 추천하는 BEST COLLECTION 영어동요 제2권. 노래는 영어를 쉽게 따라 하게하고, 소리 내어 발음을 연습하게 만들면서 듣기 훈련까지 이루는 효과적인 방법입니다. <미국선생님이 추천하는 BEST COLLECTION 영어동요>는 아침에 일어나서, 세수하고, 친구를 만나는 등의 아이의 일상생활을...</td>
+                </tr>
+
+            </table>
+            <br>
+            <br>
+        {{/registerList}}
+
+        <br>
+        <br>
+
+        <div class="next_btn">
+            <a href="/books/register">
+                <button type="button" class="next_btn1">도서등록
+                    바로가기
+                </button>
+            </a>
+        </div>
+
+    </form>
+</div>
+</body>
+</html>
