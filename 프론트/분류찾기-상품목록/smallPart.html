@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>소분류-소설</title>
+
+
+    <style>
+        body {
+            background-color: #0052040a;
+        }
+
+        .smalPart_model_container {
+            position: absolute;
+            top: 250px;
+            left: 100px;
+
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        #smallCATE_title {
+            position: absolute;
+            top: 30px;
+            left: 300px;
+            width: 1000px;
+        }
+
+        #smallCATE_bigCATE {
+            position: absolute;
+            top: 80px;
+            left: 300px;
+        }
+
+        #smallCATE_bigCATE_title {
+            width: 160px;
+            height: 80px;
+            background-color: rgb(255, 128, 255);
+            font-size: 20px;
+            text-align: center;
+            padding: 10px 0 0 0;
+        }
+
+        .smallCATE_bigCATE_list {
+            width: 160px;
+            height: 30px;
+            border-bottom: 1px solid rgb(255, 128, 255);
+            padding: 10px 0 0 0;
+        }
+
+        .smallCATE_sorts_1 {
+            position: absolute;
+            top: 80px;
+            left: 550px;
+            font-size: 15px;
+            width: 700px;
+            height: 30px;
+            border-top: 2px solid rgb(255, 128, 255);
+            ;
+            border-bottom: 1px solid rgb(255, 128, 255);
+            ;
+
+        }
+
+        .smallCATE_sorts_2 {
+            position: absolute;
+            top: 112px;
+            left: 550px;
+            font-size: 15px;
+            width: 700px;
+            height: 30px;
+            border-bottom: 1px solid rgb(255, 128, 255);
+            ;
+
+
+        }
+
+        .smallCATE_sorts_3 {
+            position: absolute;
+            top: 144px;
+            left: 550px;
+            font-size: 15px;
+            width: 700px;
+            height: 30px;
+            border-bottom: 1px solid rgb(255, 128, 255);
+            ;
+
+
+        }
+
+        #small_1 {
+            position: absolute;
+            top: 5px;
+        }
+
+        #small_2 {
+            position: absolute;
+            top: 5px;
+        }
+
+        #small_3 {
+            position: absolute;
+            top: 5px;
+        }
+
+        /* 3개의 셀렉트 */
+        .smallCATE_select_1 {
+            position: absolute;
+            top: 250px;
+            left: 680px;
+        }
+
+        .smallCATE_select_2 {
+            position: absolute;
+            top: 250px;
+            left: 830px;
+        }
+
+        .smallCATE_select_3 {
+            position: absolute;
+            top: 250px;
+            left: 980px;
+        }
+
+        /* 셀렉트 옵션 글자 크기 */
+        .smallCATE_select_opt {
+            font-size: 15px;
+        }
+
+        /* 리스트 페이지 */
+        .smallCATE_next {
+            position: absolute;
+            top: 300px;
+            left: 780px;
+            width: 380px;
+        }
+
+        .smallCATE_next a {
+            font-size: 15px;
+        }
+
+        /* ----------------------------------- */
+
+        /* 개별 책소개 영역 */
+        a {
+            text-decoration: none;
+            color: #000;
+        }
+
+        .title {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        table img {
+            margin: 20px;
+        }
+
+        .sellBtn {
+            border: 0;
+            background-color: rgb(66, 133, 244);
+            color: white;
+            width: 150px;
+            font-size: 18px;
+            position: absolute;
+            left: 750px;
+            border-radius: 10px;
+
+        }
+
+        .basketBtn {
+            border: 0;
+            background-color: rgb(234, 67, 53);
+            color: white;
+            width: 150px;
+            font-size: 18px;
+            position: absolute;
+            left: 750px;
+            border-radius: 10px;
+        }
+
+        #list_container {
+            margin-top: 100px;
+            margin-left: 520px;
+            top: 0;
+            left: 520px;
+            width: 1000px;
+        }
+
+        button {
+            margin-left:300px;
+            margin-top: 50px;
+        }
+
+        .writer::before {
+            content: '저자:';
+            background-color: aqua;
+            color: black;
+        }
+
+        .publiser::before {
+            content: '출판사:';
+            background-color: rgb(43, 226, 171);
+            color: black;
+        }
+
+        .pub_date::before {
+            content: '출판일:';
+            background-color: antiquewhite;
+            color: black;
+        }
+
+        .price::before {
+            content: '판매가:';
+            background-color: rgb(206, 206, 51);
+            color: black;
+        }
+
+        .pub_price::before {
+            content: '정가:';
+            background-color: rgb(12, 13, 109);
+            color: rgb(243, 236, 236);
+        }
+
+        .major_kategory::before {
+            content: '대주제:';
+            background-color: rgb(94, 22, 97);
+            color: rgb(243, 236, 236);
+        }
+
+        .minor_kategory::before {
+            content: '소주제:';
+            background-color: rgb(154, 78, 156);
+            color: rgb(243, 236, 236);
+        }
+
+        .register_date::before {
+            content: '등록일:';
+            background-color: rgb(86, 150, 49);
+            color: rgb(243, 236, 236);
+        }
+
+        .pub_price {
+            text-decoration: line-through;
+            text-decoration-color: red;
+            text-decoration-thickness: 3px;
+            font-size: 15px;
+
+        }
+
+        .book_detail_s::before {
+            content: '품질등급:';
+            background-color: rgb(51, 157, 206);
+            color: black;
+        }
+        .footer-layout {
+            position: fixed;
+            top: 950px;
+            width: 50%;
+            height: 200px;
+            background-color: rgba(255, 255, 255, 0);
+            font-size: 12px;
+            left: 950px;
+        }
+        .company-frame {
+            position: absolute;
+            left: 450px;
+        }
+
+        #biz-info {
+            color: #868686;
+        }
+
+        #footer-menu {
+            color: #868686;
+            font-weight: bold;
+        }
+
+        #footer-menu a {
+            text-decoration: none;
+            color: #868686;
+            font-size: 14px;
+        }
+
+        .footer-info_p {
+            color: rgb(93, 93, 93);
+
+        }
+
+        .cs-frame {
+            position: absolute;
+            top: 20px;
+            left: 1300px;
+            color: #6d6d6d;
+            font-size: 17px;
+        }
+
+        .cs-inner_p {
+            font-size: 12px;
+        }
+
+        .number {
+            font-size: 17px;
+            color: rgb(29, 219, 22);
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div id="header"></div>
+
+    <div class="smalPart_model_container">
+
+        <div id="smallCATE_title">
+            <a href="#">홈</a> >
+            <a href="#">전체보기</a>
+        </div>
+
+        <div id="smallCATE_bigCATE">
+            <div id="smallCATE_bigCATE_title">
+                <p>전체보기</p>
+            </div>
+            <div class="smallCATE_bigCATE_list">
+                <a href="#">소설</a>
+            </div>
+            <div class="smallCATE_bigCATE_list">
+                <a href="#">문학/인물</a>
+            </div>
+            <div class="smallCATE_bigCATE_list">
+                <a href="#">역사/철학/심리/교육</a>
+            </div>
+            <div class="smallCATE_bigCATE_list">
+                <a href="#">자기계발</a>
+            </div>
+            <div class="smallCATE_bigCATE_list">
+                <a href="#">경영/경제</a>
+            </div>
+            <div class="smallCATE_bigCATE_list">
+                <a href="#">만화</a>
+            </div>
+            <div class="smallCATE_bigCATE_list">
+                <a href="#">종교</a>
+            </div>
+            <div class="smallCATE_bigCATE_list">
+                <a href="#">취미</a>
+            </div>
+            <div class="smallCATE_bigCATE_list">
+                <a href="#">역사/문화</a>
+            </div>
+            <div class="smallCATE_bigCATE_list">
+                <a href="#">가정/건강</a>
+            </div>
+            <div class="smallCATE_bigCATE_list">
+                <a href="#">사회/정치/법/과학</a>
+            </div>
+            <div class="smallCATE_bigCATE_list">
+                <a href="#">전문서적</a>
+            </div>
+            <div class="smallCATE_bigCATE_list">
+                <a href="#">외국어</a>
+            </div>
+            <div class="smallCATE_bigCATE_list">
+                <a href="#">외국도서/원서</a>
+            </div>
+            <div class="smallCATE_bigCATE_list">
+                <a href="#">유아</a>
+            </div>
+            <div class="smallCATE_bigCATE_list">
+                <a href="#">아동/초등</a>
+            </div>
+            <div class="smallCATE_bigCATE_list">
+                <a href="#">청소년</a>
+            </div>
+            <div class="smallCATE_bigCATE_list">
+                <a href="#">중학생</a>
+            </div>
+            <div class="smallCATE_bigCATE_list">
+                <a href="#">고등학생</a>
+            </div>
+            <div class="smallCATE_bigCATE_list">
+                <a href="#">대학생</a>
+            </div>
+            <div class="smallCATE_bigCATE_list">
+                <a href="#">취업/자격증/시험</a>
+            </div>
+            <div class="smallCATE_bigCATE_list">
+                <a href="#">영화/음반</a>
+            </div>
+            <div class="smallCATE_bigCATE_list">
+                <a href="#">사전/전집</a>
+            </div>
+            <div class="smallCATE_bigCATE_list">
+                <a href="#">고서/희귀본</a>
+            </div>
+            <div class="smallCATE_bigCATE_list">
+                <a href="#">성인</a>
+            </div>
+            <div class="smallCATE_bigCATE_list">
+                <a href="#">기타</a>
+            </div>
+        </div>
+        <div id="list_container">
+            <table id="user-table">
+                <tbody>
+                    <form>
+                        <tr>
+                            <td><a href="..//project1/p1_bookIntro_1.html"><img
+                                        src="..//project1/images/newbook/newbook1.png" width="160px" height="240px"></a>
+                            </td>
+                            <td><span class="title"><a href="#">
+                                        황제를 위하여</a></span><span class="book_id">&nbsp(989876565)</span>
+                                <br><br> <span class="writer">&nbsp이문열 |&nbsp&nbsp</span>
+                                <span class="publiser">&nbsp민음사 |&nbsp&nbsp</span>
+                                <span class="pub_date">&nbsp2001-01-09</span> <br><br>
+                                <span class="major_kategory">&nbsp소설 |</span>&nbsp&nbsp&nbsp<span
+                                    class="minor_kategory">
+                                    &nbsp국내소설 |</span>&nbsp&nbsp&nbsp<span class="register_date">
+                                    &nbsp2021-08-09</span><br><br>
+                                <span class="book_detail_s">&nbsp최상급&nbsp&nbsp&nbsp</span>
+                                <a href="..//project1/p1_needs_info_book_grade.html">[품질등급기준 보기]</a>
+                                <br><br>
+                                <span class="price">&nbsp5,000원 |</span>&nbsp&nbsp&nbsp<span
+                                    class="pub_price">&nbsp12,000원</span>
+                            </td>
+                            <td>
+                                <button type="submit" class="sellBtn" id="sellBtn_1">구입하기</button><br><br>
+                                <button type="submit" class="basketBtn" id="basketBtn_1">장바구니</button>
+                            </td>
+                        </tr>
+                    </form>
+                </tbody>
+            </table>
+            <table id="user-table">
+                <tbody>
+                    <form>
+                        <tr>
+                            <td><a href="..//project1/p1_bookIntro_1.html"><img
+                                        src="..//project1/images/newbook/newbook1.png" width="160px" height="240px"></a>
+                            </td>
+                            <td><span class="title"><a href="#">
+                                        누구를 위해 종을 울리나</a></span><span class="book_id">&nbsp(989876565)</span>
+                                <br><br> <span class="writer">&nbsp난 모른단다 |&nbsp&nbsp</span>
+                                <span class="publiser">&nbsp종울림 |&nbsp&nbsp</span>
+                                <span class="pub_date">&nbsp1877-04-11</span> <br><br>
+                                <span class="major_kategory">&nbsp소설 |</span>&nbsp&nbsp&nbsp<span
+                                    class="minor_kategory">
+                                    &nbsp외국소설 |</span>&nbsp&nbsp&nbsp<span class="register_date">
+                                    &nbsp2021-08-09</span><br><br>
+                                <span class="book_detail_s">&nbsp중급&nbsp&nbsp&nbsp</span>
+                                <a href="..//project1/p1_needs_info_book_grade.html">[품질등급기준 보기]</a>
+                                <br><br>
+                                <span class="price">&nbsp1,000원 |</span>&nbsp&nbsp&nbsp<span
+                                    class="pub_price">&nbsp8,000원</span>
+                            </td>
+                            <td>
+                                <button type="submit" class="sellBtn" id="sellBtn_1">구입하기</button><br><br>
+                                <button type="submit" class="basketBtn" id="basketBtn_1">장바구니</button>
+                            </td>
+                        </tr>
+                    </form>
+                </tbody>
+            </table>
+            <table id="user-table">
+                <tbody>
+                    <form>
+                        <tr>
+                            <td><a href="..//project1/p1_bookIntro_1.html"><img
+                                        src="..//project1/images/newbook/newbook1.png" width="160px" height="240px"></a>
+                            </td>
+                            <td><span class="title"><a href="#">
+                                        나니야 연대기</a></span><span class="book_id">&nbsp(989876565)</span>
+                                <br><br> <span class="writer">&nbspC.S.루이스 |&nbsp&nbsp</span>
+                                <span class="publiser">&nbsp여행가자 |&nbsp&nbsp</span>
+                                <span class="pub_date">&nbsp2001-06-23</span> <br><br>
+                                <span class="major_kategory">&nbsp소설 |</span>&nbsp&nbsp&nbsp<span
+                                    class="minor_kategory">
+                                    &nbsp외국소설 |</span>&nbsp&nbsp&nbsp<span class="register_date">
+                                    &nbsp2023-10-03</span><br><br>
+                                <span class="book_detail_s">&nbsp상급&nbsp&nbsp&nbsp</span>
+                                <a href="..//project1/p1_needs_info_book_grade.html">[품질등급기준 보기]</a>
+                                <br><br>
+                                <span class="price">&nbsp1,800원 |</span>&nbsp&nbsp&nbsp<span
+                                    class="pub_price">&nbsp9,000원</span>
+                            </td>
+                            <td>
+                                <button type="submit" class="sellBtn" id="sellBtn_1">구입하기</button><br><br>
+                                <button type="submit" class="basketBtn" id="basketBtn_1">장바구니</button>
+                            </td>
+                        </tr>
+                    </form>
+                </tbody>
+            </table>
+            <table id="user-table">
+                <tbody>
+                    <form>
+                        <tr>
+                            <td><a href="..//project1/p1_bookIntro_1.html"><img
+                                        src="..//project1/images/newbook/newbook1.png" width="160px" height="240px"></a>
+                            </td>
+                            <td><span class="title"><a href="#">
+                                        대추 나무 사랑 걸렸네</a></span><span class="book_id">&nbsp(989876565)</span>
+                                <br><br> <span class="writer">&nbsp박나라 |&nbsp&nbsp</span>
+                                <span class="publiser">&nbsp사랑나무 |&nbsp&nbsp</span>
+                                <span class="pub_date">&nbsp1987-04-11</span> <br><br>
+                                <span class="major_kategory">&nbsp소설 |</span>&nbsp&nbsp&nbsp<span
+                                    class="minor_kategory">
+                                    &nbsp국내소설 |</span>&nbsp&nbsp&nbsp<span class="register_date">
+                                    &nbsp2023-06-09</span><br><br>
+                                <span class="book_detail_s">&nbsp하급&nbsp&nbsp&nbsp</span>
+                                <a href="..//project1/p1_needs_info_book_grade.html">[품질등급기준 보기]</a>
+                                <br><br>
+                                <span class="price">&nbsp1,200원 |</span>&nbsp&nbsp&nbsp<span
+                                    class="pub_price">&nbsp8,800원</span>
+                            </td>
+                            <td>
+                                <button type="submit" class="sellBtn" id="sellBtn_1">구입하기</button><br><br>
+                                <button type="submit" class="basketBtn" id="basketBtn_1">장바구니</button>
+                            </td>
+                        </tr>
+                    </form>
+                </tbody>
+            </table>
+            <table id="user-table">
+                <tbody>
+                    <form>
+                        <tr>
+                            <td><a href="..//project1/p1_bookIntro_1.html"><img
+                                        src="..//project1/images/newbook/newbook1.png" width="160px" height="240px"></a>
+                            </td>
+                            <td><span class="title"><a href="#">
+                                        신나는 지구 이야기</a></span><span class="book_id">&nbsp(989876565)</span>
+                                <br><br> <span class="writer">&nbsp기안84 |&nbsp&nbsp</span>
+                                <span class="publiser">&nbsp웹툰기획 |&nbsp&nbsp</span>
+                                <span class="pub_date">&nbsp2012-05-31</span> <br><br>
+                                <span class="major_kategory">&nbsp소설 |</span>&nbsp&nbsp&nbsp<span
+                                    class="minor_kategory">
+                                    &nbsp국내소설 |</span>&nbsp&nbsp&nbsp<span class="register_date">
+                                    &nbsp2023-06-09</span><br><br>
+                                <span class="book_detail_s">&nbsp중급&nbsp&nbsp&nbsp</span>
+                                <a href="..//project1/p1_needs_info_book_grade.html">[품질등급기준 보기]</a>
+                                <br><br>
+                                <span class="price">&nbsp1,800원 |</span>&nbsp&nbsp&nbsp<span
+                                    class="pub_price">&nbsp10,500원</span>
+                            </td>
+                            <td>
+                                <button type="submit" class="sellBtn" id="sellBtn_1">구입하기</button><br><br>
+                                <button type="submit" class="basketBtn" id="basketBtn_1">장바구니</button>
+                            </td>
+                        </tr>
+                    </form>
+                </tbody>
+            </table>
+            <table id="user-table">
+                <tbody>
+                    <form>
+                        <tr>
+                            <td><a href="..//project1/p1_bookIntro_1.html"><img
+                                        src="..//project1/images/newbook/newbook1.png" width="160px" height="240px"></a>
+                            </td>
+                            <td><span class="title"><a href="#">
+                                        신나는 지구 이야기</a></span><span class="book_id">&nbsp(989876565)</span>
+                                <br><br> <span class="writer">&nbsp기안84 |&nbsp&nbsp</span>
+                                <span class="publiser">&nbsp웹툰기획 |&nbsp&nbsp</span>
+                                <span class="pub_date">&nbsp2012-05-31</span> <br><br>
+                                <span class="major_kategory">&nbsp소설 |</span>&nbsp&nbsp&nbsp<span
+                                    class="minor_kategory">
+                                    &nbsp국내소설 |</span>&nbsp&nbsp&nbsp<span class="register_date">
+                                    &nbsp2023-06-09</span><br><br>
+                                <span class="book_detail_s">&nbsp최상급&nbsp&nbsp&nbsp</span>
+                                <a href="..//project1/p1_needs_info_book_grade.html">[품질등급기준 보기]</a>
+                                <br><br>
+                                <span class="price">&nbsp3,500원 |</span>&nbsp&nbsp&nbsp<span
+                                    class="pub_price">&nbsp10,500원</span>
+                            </td>
+                            <td>
+                                <button type="submit" class="sellBtn" id="sellBtn_1">구입하기</button><br><br>
+                                <button type="submit" class="basketBtn" id="basketBtn_1">장바구니</button>
+                            </td>
+                        </tr>
+                    </form>
+                </tbody>
+            </table>
+            <table id="user-table">
+                <tbody>
+                    <form>
+                        <tr>
+                            <td><a href="..//project1/p1_bookIntro_1.html"><img
+                                        src="..//project1/images/newbook/newbook1.png" width="160px" height="240px"></a>
+                            </td>
+                            <td><span class="title"><a href="#">
+                                        부산에 산다</a></span><span class="book_id">&nbsp(989876565)</span>
+                                <br><br> <span class="writer">&nbsp부산시청 |&nbsp&nbsp</span>
+                                <span class="publiser">&nbsp부사출판사 |&nbsp&nbsp</span>
+                                <span class="pub_date">&nbsp2024-05-18</span> <br><br>
+                                <span class="major_kategory">&nbsp사회정치법과학 |</span>&nbsp&nbsp&nbsp<span
+                                    class="minor_kategory">
+                                    &nbsp사회 |</span>&nbsp&nbsp&nbsp<span class="register_date">
+                                    &nbsp2024-05-28</span><br><br>
+                                <span class="book_detail_s">&nbsp최상급&nbsp&nbsp&nbsp</span>
+                                <a href="..//project1/p1_needs_info_book_grade.html">[품질등급기준 보기]</a>
+                                <br><br>
+                                <span class="price">&nbsp15,500원 |</span>&nbsp&nbsp&nbsp<span
+                                    class="pub_price">&nbsp30,000원</span>
+                            </td>
+
+                            <td>
+                                <button type="submit" class="sellBtn" id="sellBtn_1">구입하기</button><br><br>
+                                <button type="submit" class="basketBtn" id="basketBtn_1">장바구니</button>
+                            </td>
+                        </tr>
+                    </form>
+                </tbody>
+            </table>
+            <table id="user-table">
+                <tbody>
+                    <form>
+                        <tr>
+                            <td><a href="..//project1/p1_bookIntro_1.html"><img
+                                        src="..//project1/images/newbook/newbook1.png" width="160px" height="240px"></a>
+                            </td>
+                            <td><span class="title"><a href="#">
+                                        서울이 좋다</a></span><span class="book_id">&nbsp(989876565)</span>
+                                <br><br> <span class="writer">&nbsp서울관광공사 |&nbsp&nbsp</span>
+                                <span class="publiser">&nbsp서사기획 |&nbsp&nbsp</span>
+                                <span class="pub_date">&nbsp2024-05-18</span> <br><br>
+                                <span class="major_kategory">&nbsp사회정치법과학 |</span>&nbsp&nbsp&nbsp<span
+                                    class="minor_kategory">
+                                    &nbsp사회 |</span>&nbsp&nbsp&nbsp<span class="register_date">
+                                    &nbsp2024-05-28</span><br><br>
+                                <span class="book_detail_s">&nbsp상급&nbsp&nbsp&nbsp</span>
+                                <a href="..//project1/p1_needs_info_book_grade.html">[품질등급기준 보기]</a>
+                                <br><br>
+                                <span class="price">&nbsp13,500원 |</span>&nbsp&nbsp&nbsp<span
+                                    class="pub_price">&nbsp30,000원</span>
+                            </td>
+                            <td>
+                                <button type="submit" class="sellBtn" id="sellBtn_1">구입하기</button><br><br>
+                                <button type="submit" class="basketBtn" id="basketBtn_1">장바구니</button>
+                            </td>
+                        </tr>
+                    </form>
+                </tbody>
+            </table>
+            <table id="user-table">
+                <tbody>
+                    <form>
+                        <tr>
+                            <td><a href="..//project1/p1_bookIntro_1.html"><img
+                                        src="..//project1/images/newbook/newbook1.png" width="160px" height="240px"></a>
+                            </td>
+                            <td><span class="title"><a href="#">
+                                        그래도 경주</a></span><span class="book_id">&nbsp(989876565)</span>
+                                <br><br> <span class="writer">&nbsp경주사랑 |&nbsp&nbsp</span>
+                                <span class="publiser">&nbsp경주버플리셔 |&nbsp&nbsp</span>
+                                <span class="pub_date">&nbsp2024-05-18</span> <br><br>
+                                <span class="major_kategory">&nbsp사회정치법과학 |</span>&nbsp&nbsp&nbsp<span
+                                    class="minor_kategory">
+                                    &nbsp사회 |</span>&nbsp&nbsp&nbsp<span class="register_date">
+                                    &nbsp2024-05-28</span><br><br>
+                                <span class="book_detail_s">&nbsp중급&nbsp&nbsp&nbsp</span>
+                                <a href="..//project1/p1_needs_info_book_grade.html">[품질등급기준 보기]</a>
+                                <br><br>
+                                <span class="price">&nbsp11,500원 |</span>&nbsp&nbsp&nbsp<span
+                                    class="pub_price">&nbsp28,000원</span>
+                            </td>
+                            <td>
+                                <button type="submit" class="sellBtn" id="sellBtn_1">구입하기</button><br><br>
+                                <button type="submit" class="basketBtn" id="basketBtn_1">장바구니</button>
+                            </td>
+                        </tr>
+                    </form>
+                </tbody>
+            </table>
+            <table id="user-table">
+                <tbody>
+                    <form>
+                        <tr>
+                            <td><a href="..//project1/p1_bookIntro_1.html"><img
+                                        src="..//project1/images/newbook/newbook1.png" width="160px" height="240px"></a>
+                            </td>
+                            <td><span class="title"><a href="#">
+                                        황제를 위하여</a></span><span class="book_id">&nbsp(989876565)</span>
+                                <br><br> <span class="writer">&nbsp이문열 |&nbsp&nbsp</span>
+                                <span class="publiser">&nbsp민음사 |&nbsp&nbsp</span>
+                                <span class="pub_date">&nbsp2001-01-09</span> <br><br>
+                                <span class="major_kategory">&nbsp소설 |</span>&nbsp&nbsp&nbsp<span
+                                    class="minor_kategory">
+                                    &nbsp국내소설 |</span>&nbsp&nbsp&nbsp<span class="register_date">
+                                    &nbsp2021-08-09</span><br><br>
+                                <span class="book_detail_s">&nbsp중급&nbsp&nbsp&nbsp</span>
+                                <a href="..//project1/p1_needs_info_book_grade.html">[품질등급기준 보기]</a>
+                                <br><br>
+                                <span class="price">&nbsp3,000원 |</span>&nbsp&nbsp&nbsp<span
+                                    class="pub_price">&nbsp12,000원</span>
+                            </td>
+                            <td>
+                                <button type="submit" class="sellBtn" id="sellBtn_1">구입하기</button><br><br>
+                                <button type="submit" class="basketBtn" id="basketBtn_1">장바구니</button>
+                            </td>
+                        </tr>
+                    </form>
+                </tbody>
+            </table>
+            <table id="user-table">
+                <tbody>
+                    <form>
+                        <tr>
+                            <td><a href="..//project1/p1_bookIntro_1.html"><img
+                                        src="..//project1/images/newbook/newbook1.png" width="160px" height="240px"></a>
+                            </td>
+                            <td><span class="title"><a href="#">
+                                        누구를 위해 종을 울리나</a></span><span class="book_id">&nbsp(989876565)</span>
+                                <br><br> <span class="writer">&nbsp난 모른단다 |&nbsp&nbsp</span>
+                                <span class="publiser">&nbsp종울림 |&nbsp&nbsp</span>
+                                <span class="pub_date">&nbsp1877-04-11</span> <br><br>
+                                <span class="major_kategory">&nbsp소설 |</span>&nbsp&nbsp&nbsp<span
+                                    class="minor_kategory">
+                                    &nbsp외국소설 |</span>&nbsp&nbsp&nbsp<span class="register_date">
+                                    &nbsp2021-08-09</span><br><br>
+                                <span class="book_detail_s">&nbsp상급&nbsp&nbsp&nbsp</span>
+                                <a href="..//project1/p1_needs_info_book_grade.html">[품질등급기준 보기]</a>
+                                <br><br>
+                                <span class="price">&nbsp2,000원 |</span>&nbsp&nbsp&nbsp<span
+                                    class="pub_price">&nbsp8,000원</span>
+                            </td>
+                            <td>
+                                <button type="submit" class="sellBtn" id="sellBtn_1">구입하기</button><br><br>
+                                <button type="submit" class="basketBtn" id="basketBtn_1">장바구니</button>
+                            </td>
+                        </tr>
+                    </form>
+                </tbody>
+            </table>
+            <table id="user-table">
+                <tbody>
+                    <form>
+                        <tr>
+                            <td><a href="..//project1/p1_bookIntro_1.html"><img
+                                        src="..//project1/images/newbook/newbook1.png" width="160px" height="240px"></a>
+                            </td>
+                            <td><span class="title"><a href="#">
+                                        황제를 위하여</a></span><span class="book_id">&nbsp(989876565)</span>
+                                <br><br> <span class="writer">&nbsp이문열 |&nbsp&nbsp</span>
+                                <span class="publiser">&nbsp민음사 |&nbsp&nbsp</span>
+                                <span class="pub_date">&nbsp2001-01-09</span> <br><br>
+                                <span class="major_kategory">&nbsp소설 |</span>&nbsp&nbsp&nbsp<span
+                                    class="minor_kategory">
+                                    &nbsp국내소설 |</span>&nbsp&nbsp&nbsp<span class="register_date">
+                                    &nbsp2021-08-09</span><br><br>
+                                <span class="book_detail_s">&nbsp중급&nbsp&nbsp&nbsp</span>
+                                <a href="..//project1/p1_needs_info_book_grade.html">[품질등급기준 보기]</a>
+                                <br><br>
+                                <span class="price">&nbsp3,000원 |</span>&nbsp&nbsp&nbsp<span
+                                    class="pub_price">&nbsp12,000원</span>
+                                    </td>
+                            <td>
+                                <button type="submit" class="sellBtn" id="sellBtn_1">구입하기</button><br><br>
+                                <button type="submit" class="basketBtn" id="basketBtn_1">장바구니</button>
+                            </td>
+                        </tr>
+                    </form>
+                </tbody>
+            </table>
+            <table id="user-table">
+                <tbody>
+                    <form>
+                        <tr>
+                            <td><a href="..//project1/p1_bookIntro_1.html"><img
+                                        src="..//project1/images/newbook/newbook1.png" width="160px" height="240px"></a>
+                            </td>
+                            <td><span class="title"><a href="#">
+                                        누구를 위해 종을 울리나</a></span><span class="book_id">&nbsp(989876565)</span>
+                                <br><br> <span class="writer">&nbsp난 모른단다 |&nbsp&nbsp</span>
+                                <span class="publiser">&nbsp종울림 |&nbsp&nbsp</span>
+                                <span class="pub_date">&nbsp1877-04-11</span> <br><br>
+                                <span class="major_kategory">&nbsp소설 |</span>&nbsp&nbsp&nbsp<span
+                                    class="minor_kategory">
+                                    &nbsp외국소설 |</span>&nbsp&nbsp&nbsp<span class="register_date">
+                                    &nbsp2021-08-09</span><br><br>
+                                <span class="book_detail_s">&nbsp하급&nbsp&nbsp&nbsp</span>
+                                <a href="..//project1/p1_needs_info_book_grade.html">[품질등급기준 보기]</a>
+                                <br><br>
+                                <span class="price">&nbsp800원 |</span>&nbsp&nbsp&nbsp<span
+                                    class="pub_price">&nbsp8,000원</span>
+                            </td>
+
+                            <td>
+                                <button type="submit" class="sellBtn" id="sellBtn_1">구입하기</button><br><br>
+                                <button type="submit" class="basketBtn" id="basketBtn_1">장바구니</button>
+                            </td>
+                            
+                        </tr>
+                        
+                    </form>
+                </tbody>
+            </table>
+           
+        </div>
+        <div class="footer-layout">
+            <div class="company-frame">
+                <br>
+                <div id="footer-menu"><a href="..//project1/p1_needs_info_main_comItro.html">회사소개&nbsp&nbsp&nbsp|</a>
+                    <a href="..//project1/p1_needs_info_personal_info.html">개인정보취급방침&nbsp&nbsp|</a>
+                    <a href="..//project1/p1_needs_info_service_policy.html">이용약관&nbsp&nbsp&nbsp|</a>
+                    <a href="..//project1/p1_customer_main_notice.html">고객센터</a>
+                    <br><span class="footer-info_p">SPL중고서적. All rights reserved</span>
+                </div>
+    
+                <div class="footer-info">
+                    <span id="biz-info">[사업자정보]</span>
+                    <span class="footer-info_p">팀구성 : 서민규(장) 박주형 이상필 | 개인정보 보호책임자 : 서민규
+                        <br> 대표전화 : 1234-5678 | 사업자등록번호 : 123-45-56789 | Email : ygidonga@naver.com
+                        <br> 통신판매업 신고번호 : 제 2024-부산진구-0001호 | 주소 : 부산광역시 부산진구 선문빌딩 9층</span>
+    
+                </div>
+            </div>
+    </div>
+</body>
+
+</html>
