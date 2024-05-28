@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7강 A팀 프로젝트</title>
+    <style>
+        * {
+            box-sizing: border-box;
+
+        }
+
+        body {
+            font-family: 'Nanum Gothic', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrapper {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #ebecf0;
+            overflow: hidden;
+
+        }
+
+        form {
+            background: #ffffff5d;
+            display: flex;
+            flex-direction: column;
+            padding: 0 50px;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+            width: 550px;
+            height: 550px;
+            box-shadow: -5px -5px 10px #fff, 5px 5px 10px #c4c4c47c;
+            border-radius: 20%;
+        }
+
+        form input:not(#special) {
+            background: #eee;
+            padding: 16px;
+            margin: 8px 0;
+            width: 85%;
+            border: 0;
+            outline: none;
+            border-radius: 20px;
+            box-shadow: inset 7px 2px 10px #babebc, inset -5px -5px 12px #fff;
+        }
+
+        button {
+            border-radius: 20px;
+            border: none;
+            outline: none;
+            font-size: 15px;
+            font-weight: bold;
+            padding: 15px 45px;
+            margin: 4px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            color: #6e6e6e;
+        }
+
+        .form_btn {
+            box-shadow: -5px -5px 10px #fff, 5px 5px 8px #babebc;
+        }
+
+        .form_btn:active {
+            box-shadow: inset 1px 1px 2px #babebc, inset -1px -1px 2px #fff;
+        }
+
+        .overlay_btn {
+            background-color: #ff4b2b;
+            color: #fff;
+            box-shadow: -5px -5px 10px #ff6b3f, 5px 5px 8px #bf4b2b;
+        }
+
+        .social-links {
+            margin: 20px auto;
+            width: 300px;
+            margin-left: 146px;
+        }
+
+        form h1 {
+            font-weight: bold;
+            margin: 0;
+            color: #292929;
+            font-size: 25px;
+        }
+
+        p {
+            font-size: 16px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            margin: 20px 0 30px;
+        }
+
+        span {
+            font-size: 12px;
+            color: #a8a8a8;
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
+
+        }
+
+
+        .social-links>div {
+            width: 40px;
+            height: 40px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 5px;
+            border-radius: 50%;
+            box-shadow: -5px -5px 10px #fff, 5px 5px 8px #babebc;
+            cursor: pointer;
+        }
+
+        .social-links > div > a {
+            font-size: 39px;
+            overflow: hidden;
+            color: rgba(0, 0, 0, 0);
+        }
+
+        .social-links div:nth-of-type(1) {
+
+            background-image: url(./image/kakao.png);
+            background-size: 40px;
+        }
+
+        .social-links div:nth-of-type(2) {
+
+            background-image: url(./image/naver.png);
+            background-size: 40px;
+        }
+
+        .social-links div:nth-of-type(3) {
+
+            background-image: url(./image/google.png);
+            background-size: 100px;
+            background-position: 70px 58px;
+        }
+
+        .social-links div:nth-of-type(1):hover {
+            color: #fff;
+            box-shadow: 0px 0px 10px #fffd78, 0px 0px 20px #fffd78, 0px 0px 40px #fffd78, 0px 0px 80px #fffd78;
+        }
+
+        .social-links div:nth-of-type(2):hover {
+            color: #fff;
+            box-shadow: 0px 0px 10px #92ff7c, 0px 0px 20px #92ff7c, 0px 0px 40px #92ff7c, 0px 0px 80px #92ff7c;
+        }
+
+        .social-links div:nth-of-type(3):hover {
+            color: #fff;
+            box-shadow:10px 0px 10px #80a2ff,0px 12px 8px #84ff80,-15px 0px 8px #ffe180,0px -10px 8px #ff8080;
+        }
+
+        .social-links a {
+            color: #292929;
+        }
+
+        .social-links div:active {
+            box-shadow: inset 1px 1px 2px #babebc, inset, -1px -1px 2px #fff;
+        }
+
+        .fine {
+            clear: both;
+            position: relative;
+            top: 35px;
+            left: -36px;
+        }
+
+        .container {
+            position: relative;
+            left: -132px;
+
+        }
+
+        .fine span a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .form-check-input:active {
+            filter: brightness(90%)
+        }
+
+
+        .form-check-input:disabled {
+            pointer-events: none;
+            filter: none;
+            opacity: .5
+        }
+
+        .form-check-input:invalid:focus {
+            box-shadow: 0 0 0 .25rem rgba(220, 53, 69, .25)
+        }
+
+        .form-check-label:not(#special) {
+            color: #aaaaaa
+        }
+
+        .form-check-input:active {
+            filter: brightness(90%)
+        }
+
+
+        .form-switch {
+            padding-left: 2.5em
+        }
+
+        .form-switch .form-check-input {
+            transition: none
+        }
+
+
+
+        .form-check-input {
+            float: left;
+            margin-left: -1.5em
+        }
+
+
+        .form-check-input:checked {
+            background-color: #2bb632;
+            border-color: #2bb632
+        }
+
+
+        .form-check-input {
+            width: 1.2em;
+            height: 1.2em;
+            margin-top: .25em;
+            background-color: #ffffff;
+            border: 1px solid rgba(0, 0, 0, .25);
+            appearance: none;
+        }
+
+        .form-check-input[type=checkbox] {
+            border-radius: 1em
+        }
+
+        .container2 {
+            position: relative;
+            top: -24px;
+
+        }
+
+        .form-check-input::before {
+            content: '✔';
+            color: #ccc;
+            font-size: 1.2em;
+            line-height: 1;
+        }
+
+        .form-check-input[type=checkbox]:checked::before {
+            content: '✔';
+            display: inline-block;
+            font-size: 1.2em;
+            line-height: 1;
+            margin-right: 0.2em;
+            color: #ffffff;
+
+        }
+
+        .span {
+            position: relative;
+            left: -70px;
+            font-size: 12px;
+            color: #a8a8a8;
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
+            top: -6px;
+            
+        }
+
+        #form-check-input[type="checkbox"] {
+            display: none;
+        }
+
+        .custom-checkbox {
+            width: 46px;
+            height: 18px;
+            background-color: #ccc;
+            border-radius: 10px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .custom-checkbox.checked {
+            background-color: #2bb632;
+        }
+
+        .custom-checkbox::before {
+            content: '●';
+            font-size: 1em;
+            color: #fff;
+            position: absolute;
+            top: 50%;
+            left: 5px;
+            bottom: -20px;
+            transform: translateY(-45%);
+            transition: left 0.3s;
+        }
+
+        .custom-checkbox.checked::before {
+            left: 25px;
+        }
+
+        .custom-checkbox-label {
+            display: block;
+            padding: 5px;
+            margin-left: 320px;
+        }
+                /* 스타일 코드를 넣으세요 */
+                .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.1);
+            background-image: none;
+        }
+
+        .modal-content {
+            background-color: #ffffff;
+            margin: 308px auto;
+            padding: 20px;
+
+            width: 350px;
+            border-radius: 20px;
+            box-shadow: -5px -5px 10px #fff, 15px 15px 15px #babebc;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .btn_m {
+
+            background: #ffffff;
+            padding: 16px;
+            margin: 8px 0;
+            width: 85%;
+            border: 0;
+            outline: none;
+            border-radius: 20px;
+            box-shadow: inset 7px 2px 10px #babebc, inset -5px -5px 12px #fff;
+        }
+
+        .span_a {
+            font-size: 12px;
+            color: #a8a8a8;
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <form>
+            <h1>Login</h1>
+            <input type="email" placeholder="Email" autofocus required minlength="6" maxlength="16">
+            <input type="password" placeholder="Password" required minlength="6" maxlength="16">
+            <div class="container">
+                <input id="special" class="form-check-input" type="checkbox" id="checkbox">
+                <label class="form-check-label" for="checkbox">Remember</label>
+            </div>
+            <label class="custom-checkbox-label container2" id="form-check-input">
+                <input class="form-check-input" type="checkbox" id="form-check-input">
+                <div class="custom-checkbox" id="form-check-input"><span class="span"
+                        style="font-size: 17px;">security</span></div>
+            </label>
+            <button class="form_btn">Login</button>
+            <br><br>
+            <span>소셜네트워크 로그인</span>
+            <div class="social-links">
+                <div>
+                    <a href="https://accounts.kakao.com/login/?continue=https%3A%2F%2Fsharer.kakao.com%2Fpicker%2Flink%3Fapp_key%3D4e0f02e43248fed6c5850431ea527a61%26short_key%3D03f15ee1-f156-45f5-b1ac-824299b8a706#login" onclick="window.open(this.href, '_blank', 'width=700, height=700'); return false;">●</a>
+                </div>
+                <div>
+                    <a href="https://nid.naver.com/nidlogin.login?mode=form&url=https://www.naver.com/" onclick="window.open(this.href, '_blank', 'width=700, height=700'); return false;">●</a>
+                </div>
+                <div>
+                    <a href="https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&ifkv=ARZ0qKIwQl0QXZcf5KfQ7kEOghWilUtv6gSpzsBJc595N8ymN8N6v909APLq87dX-x6bBJ5wVQp05Q&rip=1&sacu=1&service=mail&flowName=GlifWebSignIn&flowEntry=ServiceLogin&dsh=S-821045643%3A1713104039405244&theme=mn&ddm=0" onclick="window.open(this.href, '_blank', 'width=700, height=700'); return false;">●</a>
+                </div>
+                <footer class="fine">
+                    <span><a href="./yeil_join.html">회원가입</a></span><span style="margin: 20px;"></span> 
+                    <span id="openModalBtn"><a href="#">아이디찾기</a></span> 
+                    <span style="margin: 20px;"></span><span>
+                          <a href="#" id="openPasswordModalBtn">비번찾기</a></span>
+                </footer>
+            </div>
+        </form>
+    </div>
+    <div id="idModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>아이디 찾기</h2>
+            <p class="span_a">가입 시 입력한 이메일을 입력하세요</p>
+            <input type="email" id="email" placeholder="이메일" class="btn_m">
+            <button id="findIdBtn" class="form_btn">아이디 찾기</button>
+        </div>
+    </div>
+    <div id="passwordModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>비밀번호 찾기</h2>
+            <p class="span_a">가입 시 입력한 이메일을 입력하세요</p>
+            <input type="email" id="email" placeholder="이메일" class="btn_m">
+            <button id="findPasswordBtn" class="form_btn">비밀번호 찾기</button>
+        </div>
+    </div>
+    <script>
+                const openPasswordModalBtn = document.getElementById('openPasswordModalBtn');
+const passwordModal = document.getElementById('passwordModal');
+const closePasswordModalBtn = passwordModal.querySelector('.close');
+
+openPasswordModalBtn.addEventListener('click', function() {
+    passwordModal.style.display = 'block';
+});
+
+closePasswordModalBtn.addEventListener('click', function() {
+    passwordModal.style.display = 'none';
+});
+
+window.addEventListener('click', function(event) {
+    if (event.target === passwordModal) {
+        passwordModal.style.display = 'none';
+    }
+});
+
+// 비밀번호 찾기 버튼 클릭 시 동작하는 함수
+const findPasswordBtn = document.getElementById('findPasswordBtn');
+findPasswordBtn.addEventListener('click', function() {
+    // 비밀번호 찾기 동작 추가
+    // 비밀번호를 찾은 후 모달 닫기
+    passwordModal.style.display = 'none';
+});
+         // 모달 창 표시를 위한 JavaScript 코드
+         const openModalBtn = document.getElementById('openModalBtn');
+        const idModal = document.getElementById('idModal');
+        const closeModalBtn = idModal.querySelector('.close');
+
+        openModalBtn.addEventListener('click', function() {
+            idModal.style.display = 'block';
+        });
+
+        closeModalBtn.addEventListener('click', function() {
+            idModal.style.display = 'none';
+        });
+
+        window.addEventListener('click', function(event) {
+            if (event.target === idModal) {
+                idModal.style.display = 'none';
+            }
+        });
+
+        // 아이디 찾기 버튼 클릭 시 동작하는 함수
+        const findIdBtn = document.getElementById('findIdBtn');
+        findIdBtn.addEventListener('click', function() {
+            const email = document.getElementById('email').value;
+            // 여기에 아이디를 찾는 동작을 추가하세요 (예: 서버와 통신하여 이메일에 해당하는 아이디를 가져옴)
+            alert(`입력하신 이메일(${email})로 등록된 아이디는 '사용자 아이디'입니다.`);
+            idModal.style.display = 'none'; // 모달 닫기
+        });
+        document.querySelector('.custom-checkbox-label input[type="checkbox"]').addEventListener('change', function () {
+            const checkbox = this;
+            const checkboxContainer = checkbox.parentElement.querySelector('.custom-checkbox');
+            checkboxContainer.classList.toggle('checked', checkbox.checked);
+        });
+        function poenCenjteredPopup(url, name, width, height) {
+            const left = (window.screen.width - width) / 2;
+            const top = (window.screen.height - height) / 2;
+            const options = `width=${width}, height=${height}, left=${left}, top=${top}`;
+    window.open(url, name, options);
+        }
+    </script>
+</body>
+
+</html>

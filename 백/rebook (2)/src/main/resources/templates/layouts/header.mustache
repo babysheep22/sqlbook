@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상단매뉴</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #0052040a;
+        }
+
+        .book_wrapper {
+            position: absolute;
+            left: 330px;
+            width: 1200px;
+            margin-top: 30px;
+            display: flex;
+            margin: 0px auto;
+        }
+
+        .book_wrapper>header {
+            width: 1200px;
+            height: 200px;
+            margin: 0 auto;
+        }
+
+        .book_logo {
+            background-image: url(/project1/static/header_imgs/rebook.png);
+            background-repeat: none;
+            background-position: 167px 95px;
+            background-size: 170px;
+            width: 170px;
+            height: 100px;
+            margin: 62px 0px;
+            border-radius: 20px;
+
+        }
+
+        .book_logo:hover {
+            width: 170px;
+            height: 100px;
+            margin: 62px 0px;
+            border-radius: 20px;
+            box-shadow: 0 0 5px #beff81,
+                0 0 25px #beff81,
+                0 0 50px #beff81,
+                0 0 100px #beff81;
+
+
+        }
+
+        #logo_image {
+            position: absolute;
+            left: 370px;
+        }
+
+        #logo_image:hover {
+            width: 60px;
+            /* 큰 이미지의 너비 */
+            height: 54px;
+        }
+
+        .book_logo a {
+            font-size: 45px;
+            width: 200px;
+
+        }
+
+        .topgo {
+            height: 20px;
+        }
+
+        .topgo img {
+            position: absolute;
+            width: 38px;
+            height: 38px;
+            top: 5px;
+            right: 225px;
+        }
+
+        .topj {
+            position: absolute;
+            width: 35px;
+            height: 35px;
+            top: 7px;
+            right: 150px;
+        }
+
+        .topjj {
+            position: absolute;
+            width: 40px;
+            height: 34.5px;
+            top: 7px;
+            right: 65px;
+        }
+
+        .top-spans {
+            position: absolute;
+            width: 100%;
+            color: #000000;
+            padding: 15px;
+            left: 0px;
+            top: 0;
+        }
+
+        .top-left {
+            position: absolute;
+            width: 500px;
+            left: -260px;
+            top: 0px;
+            padding: 15px;
+            color: #000000;
+        }
+
+        .move_menu {
+            position: absolute;
+        }
+
+        .move_menu li {
+            color: #fff;
+        }
+
+        .move_menu>a {
+            font-size: 50px;
+            font-weight: bold;
+        }
+
+        .book_wrapper>header>ul {
+            margin-right: 50px;
+        }
+
+        .book_wrapper ul>li {
+            float: right;
+            font-size: 12px;
+            padding-left: 10px;
+            margin-left: 20px;
+            letter-spacing: 0.8;
+            list-style: none;
+        }
+
+        .book_wrapper ul>li>a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .navi {
+            position: absolute;
+            top: 190px;
+            left: 50px;
+            letter-spacing: -0.3px;
+        }
+
+        .back {
+            position: absolute;
+            width: 150px;
+            height: 50px;
+            top: 175px;
+            left: 222px;
+        }
+
+        .back0 {
+            position: absolute;
+            width: 150px;
+            height: 30px;
+            top: 141px;
+            left: 485px;
+        }
+
+        .back2 {
+            position: absolute;
+            width: 150px;
+            height: 50px;
+            top: 175px;
+            left: 485px;
+
+        }
+
+        .back3 {
+            position: absolute;
+            width: 150px;
+            height: 50px;
+            top: 175px;
+            left: 730px;
+        }
+
+        .back33 {
+            position: absolute;
+            width: 90px;
+            height: 90px;
+            top: 110px;
+            left: 760px;
+
+        }
+
+        .back4 {
+            position: absolute;
+            width: 220px;
+            height: 50px;
+            top: 175px;
+            left: 995px;
+        }
+
+        .back66 {
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            top: 105px;
+            left: 1065px;
+        }
+
+        .back5 {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            top: 130px;
+            left: 235px;
+            transform: rotate(-15deg);
+        }
+
+        .back6 {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            top: 10px;
+            left: 65px;
+        }
+
+        .back7 {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            top: 12px;
+            left: 610px;
+        }
+
+        .back7:active {
+            position: absolute;
+            top: 15px;
+        }
+
+        .navi ul {
+            list-style: none;
+        }
+
+        .navi ul li {
+            font-size: 15px;
+            font-weight: bold;
+            margin-left: 200px;
+            float: left;
+        }
+
+        .slider__wrap {
+
+            height: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            top: 6px;
+
+
+        }
+
+        .slider__img {
+            /* 이미지가 보이는 영역 */
+
+            width: 1200px;
+            height: 450px;
+            overflow: hidden;
+            border-radius: 20px;
+            display: none;
+        }
+
+        .slider__inner {
+            /* 이미지 움직이는 영역 */
+
+            flex-wrap: wrap;
+            width: 12000px;
+            /* 총 이미지 영역 */
+            height: 450px;
+        }
+
+        .slider {
+            /* 개별적인 이미지 */
+
+            width: 1200px;
+            height: 450px;
+        }
+
+
+
+        #btn {
+            display: none;
+        }
+
+        #btn_label {
+            width: 35px;
+            height: 35px;
+            display: block;
+            color: rgb(0, 0, 0);
+            font: 900 25px/50px '';
+            text-align: center;
+            position: absolute;
+            /* 절대 위치 설정 */
+            top: 175px;
+            right: 1525px;
+        }
+
+
+        #btn_label>img {
+            width: 55px;
+            height: 55px;
+        }
+
+        #move_box {
+            width: 778px;
+            height: 0;
+            background-color: #2f3b2fd2;
+            overflow: hidden;
+            transition-duration: 0.5s;
+            position: absolute;
+            top: 230px;
+            left: 0px;
+            text-align: center;
+            border-radius: 20px 20px 20px 20px;
+            background-image: url(/project1/static/header_imgs/blueframe.png);
+            background-repeat: no-repeat;
+            background-position: -255px -15px;
+            background-size: 1300px 520px;
+        }
+
+        #move_box::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0px;
+            width: 1200px;
+            height: 100%;
+            background-image: url(/project1/static/header_imgs/frame.png);
+            transform: rotate(45deg);
+            z-index: -1;
+        }
+
+
+        #btn:checked~#move_box,
+        #btn:hover~#move_box,
+        #move_box:hover {
+            height: 450px;
+        }
+
+        #btn_label_con {
+            width: 35px;
+            height: 35px;
+
+            display: block;
+            color: rgb(0, 0, 0);
+            font: 900 25px/50px '';
+            text-align: center;
+            position: absolute;
+            top: -2px;
+            right: 310px;
+        }
+
+        #btn_label_con>img {
+            width: 50px;
+            height: 50px;
+        }
+
+        #move_box_con {
+            width: 370px;
+            height: 0px;
+            background-color: rgba(255, 255, 255, 0);
+            overflow: hidden;
+            transition-duration: 0.3s;
+            position: absolute;
+            top: 18px;
+            left: 480px;
+            padding-left: -30px;
+        }
+
+        #btn_con:checked~#move_box_con,
+        #btn_con:hover~#move_box_con,
+        #move_box_con:hover {
+            height: 50px;
+        }
+
+        .search {
+            position: absolute;
+            top: 60px;
+            left: 300px;
+        }
+
+        .search input {
+            border-radius: 20px;
+            font-size: 20px;
+            box-shadow: inset 7px 2px 10px #babebc, inset -5px -5px 12px #fff;
+            border: none;
+            padding: 18px;
+            outline: none;
+            width: 600px;
+            padding-left: 20px;
+            margin-top: 10px;
+
+
+        }
+
+
+
+        .search button {
+            width: 70px;
+            height: 56px;
+            top: 30px;
+            border-radius: 20px;
+            border: none;
+            outline: none;
+            box-shadow: none;
+            background-color: #fff;
+            font-weight: bold;
+        }
+
+        .search button:hover {
+            cursor: pointer;
+        }
+
+        .search button:active {
+            box-shadow: none;
+        }
+
+        .search input:active {
+            box-shadow: 5px 5px 10px #bebebe, 3px 3px 7px #bebebe;
+        }
+
+        .view {
+            position: absolute;
+            right: 360px;
+            top: 62px;
+            width: 200px;
+            border-radius: 20px;
+            box-shadow: 5px 5px 10px #bebebe, 3px 3px 7px #bebebe;
+        }
+
+        .my {
+            width: 350px;
+            height: 500px;
+        }
+
+        .my:hover {
+            color: rgb(26, 187, 74);
+        }
+
+        .my_k:hover {
+            font-size: 20px;
+            box-shadow: 0 0 5px #03d0f4,
+                0 0 25px #03d0f4,
+                0 0 50px #03d0f4,
+                0 0 100px #03d0f4;
+            background-color: rgba(3, 208, 244, 1);
+            border-radius: 6px;
+
+        }
+
+        .logo_logo {
+            width: 100px;
+        }
+    </style>
+    </style>
+</head>
+
+<body>
+<form>
+    <div class="book_wrapper">
+        <header>
+            <div class="logo_logo"><a href="/project1/templates/layouts/header/new_header_new.html"
+                                      style="font-size: 80px;">
+                <div class="book_logo"></div>
+            </a></div>
+            <div class="top-spans">
+                <ul>
+                    <li><a href="#"><img src="/project1/static/header_imgs/new_jjim.png" class="topjj"></a></li>
+                    <li><a href="#"><img src="/project1/static/header_imgs/new_jang22.png" class="topj"></a></li>
+                    <li class="topgo"><a href="#"><img src="/project1/static/header_imgs/new_go3.png"></a></li>
+                </ul>
+            </div>
+            <div class="top-left">
+                <ul>
+                    <!-- <li><img src=""></li> -->
+                </ul>
+            </div>
+            <nav class="navi">
+                <ul>
+                    <li><a href="#">베스트도서</a></li>
+                    <li><a href="#"><span>리뷰</span></a></li>
+                    <li><a href="#">이벤트</a></li>
+                    <li><a href="#">도서요청 / 매입신청</a></li>
+                </ul>
+            </nav>
+            <div class="slider__wrap">
+                <div class="slider__img">
+                    <div class="slider__inner">
+                        <div class="slider s1"><img
+                                src="/project1/static/header_imgs/KakaoTalk_20240417_153430385_01.png" alt="이미지3">
+                            <!--슬라이드 1번째 이미지 이하 1~5 사진-->
+                        </div>
+                        <div class="slider s2"><img
+                                src="/project1/static/header_imgs/KakaoTalk_20240417_153430385_02.png" alt="이미지4">
+                        </div>
+                        <div class="slider s3"><img
+                                src="/project1/static/header_imgs/KakaoTalk_20240417_153430385_03.png" alt="이미지6">
+                        </div>
+                        <div class="slider s4"><img
+                                src="/project1/static/header_imgs/KakaoTalk_20240417_153430385_04.png" alt="이미지8">
+                        </div>
+                        <div class="slider s5"><img
+                                src="/project1/static/header_imgs/KakaoTalk_20240417_153430385.png" alt="이미지09">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <input type="checkbox" id="btn"/>
+        <!-- <label for="btn" id="btn_label" class="logo_hover" onmouseover="changeImage('/project1/static/header_imgs/opnebook5.png')"
+            onmouseout="changeImage('/project1/static/header_imgs/bb.png')">
+            <img src="/project1/static/header_imgs/bb.png" id="logo_image">
+        </label> -->
+        <!-- <div id="move_box" class="hidden-menu" onmouseover="changeImage('/project1/static/header_imgs/opnebook5.png')"
+            onmouseout="changeImage('/project1/static/header_imgs/image/bb.png')">
+            <h3 style="font-weight: bold; color: #fff; margin-top: 15px;">분야별 찾기</h3>
+            <div class="move_menu">
+                <ul style="float: left;   display: block;">
+                    <li style="font-size: 15px; font-weight: bold; margin-left: 30px; width: 120px;"><a href="#"
+                            style="line-height: 80px;"><span class="my_k">소설</span></a></li>
+                    <li style="font-size: 15px; font-weight: bold; margin-left: 30px; width: 120px;"><a href="#"
+                            style="line-height: 80px;"><span class="my_k">컴퓨터</span></a></li>
+                    <li style="font-size: 15px; font-weight: bold; margin-left: 30px; width: 120px;"><a href="#"
+                            style="line-height: 80px;"><span class="my_k">종교</span></a></li>
+                    <li style="font-size: 15px; font-weight: bold; margin-left: 30px; width: 120px;"><a href="#"
+                            style="line-height: 80px;"><span class="my_k">자격증/취업</span></a></li>
+                    <li style="font-size: 15px; font-weight: bold; margin-left: 30px; width: 120px;"><a href="#"
+                            style="line-height: 80px;"><span class="my_k">역사/문화</span></a></li>
+                </ul>
+                <ul style="float: left; display: block; ">
+                    <li style="font-size: 15px; font-weight: bold; margin-left: 30px; width: 120px;"><a href="#"
+                            style="line-height: 80px;"><span class="my_k">만화</span></a></li>
+                    <li style="font-size: 15px; font-weight: bold; margin-left: 30px; width: 120px;"><a href="#"
+                            style="line-height: 80px;"><span class="my_k">성인</span></a></li>
+                    <li style="font-size: 15px; font-weight: bold; margin-left: 30px; width: 120px;"><a href="#"
+                            style="line-height: 80px;"><span class="my_k">잡지</span></a></li>
+                    <li style="font-size: 15px; font-weight: bold; margin-left: 30px; width: 120px;"><a href="#"
+                            style="line-height: 80px;"><span class="my_k">심리/교육</span></a></li>
+                    <li style="font-size: 15px; font-weight: bold; margin-left: 30px; width: 120px;"><a href="#"
+                            style="line-height: 80px;"><span class="my_k">사회/정치</span></a></li>
+                </ul>
+                <ul style="float: left; display: block;">
+                    <li style="font-size: 15px; font-weight: bold; margin-left: 30px; width: 120px;"><a href="#"
+                            style="line-height: 80px;"><span class="my_k">과학</span></a></li>
+                    <li style="font-size: 15px; font-weight: bold; margin-left: 30px; width: 120px;"><a href="#"
+                            style="line-height: 80px;"><span class="my_k">언어</span></a></li>
+                    <li style="font-size: 15px; font-weight: bold; margin-left: 30px; width: 120px;"><a href="#"
+                            style="line-height: 80px;"><span class="my_k">취미</span></a></li>
+                    <li style="font-size: 15px; font-weight: bold; margin-left: 30px; width: 120px;"><a href="#"
+                            style="line-height: 80px;"><span class="my_k">문학/인물</span></a></li>
+                    <li style="font-size: 15px; font-weight: bold; margin-left: 30px; width: 120px;"><a href="#"
+                            style="line-height: 80px;"><span class="my_k">가정/건강</span></a></li>
+                </ul>
+                <ul style="float: left; display: block;">
+                    <li style="font-size: 15px; font-weight: bold; margin-left: 30px; width: 120px;"><a href="#"
+                            style="line-height: 80px;"><span class="my_k">패션</span></a></li>
+                    <li style="font-size: 15px; font-weight: bold; margin-left: 30px; width: 120px;"><a href="#"
+                            style="line-height: 80px;"><span class="my_k">기타</span></a></li>
+                    <li style="font-size: 15px; font-weight: bold; margin-left: 30px; width: 120px;"><a href="#"
+                            style="line-height: 80px;"><span class="my_k">법학</span></a></li>
+                    <li style="font-size: 15px; font-weight: bold; margin-left: 30px; width: 120px;"><a href="#"
+                            style="line-height: 80px;"><span class="my_k">초/중/고</span></a></li>
+                    <li style="font-size: 15px; font-weight: bold; margin-left: 30px; width: 120px;"><a href="#"
+                            style="line-height: 80px;"><span class="my_k">아동/유아</span></a></li>
+                </ul>
+                <ul style="float: left; display: block;">
+                    <li style="font-size: 15px; font-weight: bold; margin-left: 30px; width: 120px;"><a href="#"
+                            style="line-height: 80px;"><span class="my_k">입력</span></a></li>
+                    <li style="font-size: 15px; font-weight: bold; margin-left: 30px; width: 120px;"><a href="#"
+                            style="line-height: 80px;"><span class="my_k">입력</span></a></li>
+                    <li style="font-size: 15px; font-weight: bold; margin-left: 30px; width: 120px;"><a href="#"
+                            style="line-height: 80px;"><span class="my_k">입력</span></a></li>
+                    <li style="font-size: 15px; font-weight: bold; margin-left: 30px; width: 120px;"><a href="#"
+                            style="line-height: 80px;"><span class="my_k">입력</span></a></li>
+                    <li style="font-size: 15px; font-weight: bold; margin-left: 30px; width: 120px;"><a href="#"
+                            style="line-height: 80px;"><span class="my_k">입력</span></a></li>
+                </ul>
+            </div>
+        </div> -->
+        <div>
+            <a href="#"><img src="/project1/static/header_imgs/sh5.png" class="back"></a>
+            <a href="#"><img src="/project1/static/header_imgs/sh5.png" class="back2"></a>
+            <img src="/project1/static/header_imgs/review.png" class="back0">
+            <a href="#"><img src="/project1/static/header_imgs/sh5.png" class="back3"></a>
+            <img src="/project1/static/header_imgs/gif.png" class="back33">
+            <a href="#"><img src="/project1/static/header_imgs/sh5.png" class="back4"></a>
+            <img src="/project1/static/header_imgs/c.png" class="back5">
+            <a href="#"><img src="/project1/static/header_imgs/new_home.png" class="back6"></a>
+            <img src="/project1/static/header_imgs/do.png" class="back66">
+        </div>
+        <div class="search">
+            <input type="text" id="text" name="search" placeholder="검색어를 입력하세요" onkeydown="entersearch()">
+            <button name="search" onclick="myFunction()" class="back8"
+                    style="background-color: rgba(0, 0, 0, 0);"><img src="/project1/static/header_imgs/dod.png"
+                                                                     class="back7"></button>
+        </div>
+
+        <input type="range" id="btn_con" style="overflow: hidden; display: none;"/>
+        <label for="btn_con" id="btn_label_con"><img src="/project1/static/header_imgs/new_login3.png"></label>
+        <div id="move_box_con" class="hidden-menu">
+            <h6 style="font-weight: bold; color: #fff;"></h6>
+            <div class="move_menu">
+                <ul class="hime">
+                    <li><a href="./new_login.html"
+                           style="font-size: 15px; color: rgb(0, 0, 0); font-weight: bold;"><span
+                            class="my">로그인</span></a></li>
+                    <li><a href="#" style="font-size: 15px; color: rgb(0, 0, 0); font-weight: bold;"><span
+                            class="my">마이페이지</span></a>
+                    </li>
+                    <li><a href="#" style="font-size: 15px; color: rgb(0, 0, 0); font-weight: bold;"><span
+                            class="my">주문조회</span></a>
+                    </li>
+                    <li><a href="./new_join.html"
+                           style="font-size: 15px; color: rgb(0, 0, 0); font-weight: bold;"><span
+                            class="my">회원가입</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</form>
+<script>
+    const sliderWrap = document.querySelector(".slider__wrap");
+    const sliderImg = sliderWrap.querySelector(".slider__img");         //보여지는 영역
+    const sliderInner = sliderWrap.querySelector(".slider__inner");     //움직이는 영역
+    const slider = sliderWrap.querySelectorAll(".slider");              //개별 이미지
+
+    let currentIndex = 0;                                               //현재 보이는 이미지
+    let sliderCount = slider.length;                                    //이미지 갯수
+    let sliderInterval = 5000;                                          //이미지 변경 간격 시간
+    let sliderWidth = slider[0].offsetWidth;                            //이미지 가로 값
+    let sliderClone = sliderInner.firstElementChild.cloneNode(true);    //첫번째 이미지 복사
+
+    // 복사한 첫 번째 이미지 마지막에 붙여넣기
+    sliderInner.appendChild(sliderClone);
+
+    function sliderEffect()
+    {
+        currentIndex++;
+
+        sliderInner.style.transition = "all 0.7s";
+        sliderInner.style.transform = "translateX(-" + sliderWidth * currentIndex + "px)";
+
+        //마지막 이미지에 위치 했을 때
+        if (currentIndex == sliderCount) {
+            setTimeout(() => {
+                sliderInner.style.transition = "0s";
+                sliderInner.style.transform = "translateX(0px)";
+            }, 700);
+
+            currentIndex = 0;
+        }
+
+    }
+
+    setInterval(sliderEffect, sliderInterval);
+
+    document.getElementById('move_box').addEventListener('mouseleave', function () {
+        document.getElementById('btn').checked = false;
+    });
+    document.getElementById('move_box_con').addEventListener('mouseleave', function () {
+        document.getElementById('btn_con').checked = false;
+    });
+
+    function entersearch(event) {
+        if (event.keyCode === 13) {
+            myFunction();
+        }
+    }
+
+    function myFunction() { //검색창
+        let x = document.getElementById("text").value;
+        window.location.href = "https://search.naver.com/search.naver?where=nexearch&sm=top_sug.pre&fbm=0&acr=1&acq=%EB%82%98%EB%AC%B4&qbt=0&ie=utf8&query=" + x;
+    }
+
+    function changeImage(newImageSrc) {
+        var logoImage = document.getElementById("logo_image");
+        logoImage.src = newImageSrc; // 로고이미지 변경
+    }
+
+</script>
+</body>
+
+</html>

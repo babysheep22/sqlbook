@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>도서 상세정보 소개 페이지</title>
+    <style>
+        /* 바디 css 시작 ----------------------------------------------------------------------- */
+
+        body {
+      background-color: white;
+    }
+
+        #container_book {
+            position: absolute;
+            top: 240px;
+            left: 600PX;
+        }
+
+        /* 표지 위 제목 저자 등 */
+        #book_title {
+            position: absolute;
+            top: 30px;
+            left: 100px;
+            width: 700px;
+        }
+
+
+        /* 표지 위 제목 저자 출판사 등 글자색 */
+        .book_title_s {
+            color: rgb(0, 128, 255);
+        }
+
+        /* 표지 이미지 */
+        #book_img {
+            position: absolute;
+            top: 180px;
+            left: 150px;
+            border: 1px solid rgb(189, 189, 189);
+            border-radius: 10PX;
+            width:  400px;
+             height: 500px;
+
+
+        }
+
+        /* 책 디테일 소개: 분류, ISBN, 판매가 배송비 품질 등*/
+        #book_detail {
+            position: absolute;
+            top: 160px;
+            left: 650px;
+            width: 450px;
+        }
+
+        #book_detail a {
+            text-decoration: none;
+            color: blueviolet;
+            font-weight: bold;
+        }
+
+        .book_detail_s {
+            color:  rgb(0, 128, 255);
+        }
+
+        .book_detail_s2 {
+            color: black;
+        }
+
+        /* 장바구니/바로구매 버튼 */
+ #book_basket_sell {
+            position: absolute;
+            top: 600px;
+            left: 650px;
+            width: 300px;
+        }
+
+        #book_basket_btn {
+            border: 0;
+            background-color: rgb(234, 67, 53);
+            color: white;
+            width: 150px;
+            font-size: 18px;
+            position: absolute;
+
+            border-radius: 10px;
+        }
+
+        #book_sell_btn {
+           border: 0;
+            background-color: rgb(66, 133, 244);
+            color: white;
+            width: 150px;
+            font-size: 18px;
+            position: absolute;
+            top: 60px;
+            border-radius: 10px;
+        }
+
+
+        /* 책 디테일 소개 > 테이블 높이 */
+        .table_tr {
+            height: 50px;
+        }
+
+
+
+        /* 판매자 책설명, 책 내용 등 소개 > 테이블 위치 */
+        #detail_table {
+            position: absolute;
+            top: 700px;
+            left: 150px;
+            width: 900px;
+
+        }
+
+        /* 판매자 책설명 > 테이블 높이 */
+        #detail_table_tr1 {
+            height: 100px;
+        }
+
+        /* 판매자 책설명, 책 내용 등 소개 > 앞행 글자 굵기*/
+        .detail_table_td1 {
+            font-weight: bold;
+        }
+
+
+        /* 판매자 책설명, 책 내용 등 소개 > 뒷행 크기 및 아래쪽만 선나오도록 */
+        .detail_table_td2 {
+            width: 700px;
+            border-bottom: 1px solid rgb(189, 189, 189);
+        }
+
+        /* 콤펜트(리뷰) */
+        #comment {
+            position: absolute;
+            top: 300px;
+
+        }
+
+    </style>
+
+
+</head>
+
+<!-- 바디 시작 ------------------------------------------------------------------------ -->
+
+<body>
+<div id="container_book">
+    {{#register}}
+        <div id="book_title">
+            <h1>{{book_title}}</h1>
+            <p><span class="book_title_s">&nbsp&nbsp저자</span><span id="book_author">&nbsp&nbsp{{book_author}}</span>
+                <span class="book_title_s">&nbsp&nbsp출판사</span><span id="publisher">&nbsp&nbsp{{publisher}}</span></p>
+        </div>
+
+        <div id="book_img">{{book_image}}
+
+        </div>
+        <div id="book_detail">
+            <p> <span class="book_detail_s">대주제</span> <span class="book_detail_s2"
+                                                             id="major_kategory">&nbsp&nbsp{{major_kategory}}</span>
+
+                <span class="book_detail_s">소주제</span><span class="book_detail_s2">&nbsp&nbsp{{minor_kategory}}</span></p>
+            <br>
+            <p> <span class="book_detail_s">판매가</span><span class="book_detail_s2">&nbsp&nbsp{{sell_price}}&nbsp</span>
+                <span class="book_detail_s">정 가</span><span class="book_detail_s2">&nbsp&nbsp{{list_price}}&nbsp</span></p>
+            <br>
+            <p><span class="book_title_s">출판일</span><span id="pub_date">&nbsp&nbsp{{pub_date}}</span>
+                <span class="book_title_s">&nbsp&nbsp상품등록일</span><span
+                        id="register_date">&nbsp&nbsp{{modifiedDate}}</span></p>
+            <br>
+            <p class="book_detail_s">배송비<span class="book_detail_s2">&nbsp&nbsp3000원(판매자 상품 50,000원이상 무료 배송)&nbsp</span>
+            </p>
+            <br>
+            <p class="book_detail_s">품질등급<span class="book_detail_s2">&nbsp&nbsp{{book_detail}}
+                &nbsp&nbsp&nbsp&nbsp&nbsp</span>
+                <button class="book_detail_s_btn"><a
+                        href="..//project1/p1_needs_info_book_grade.html">품질등급기준</a></button>
+                </td>
+            </p>
+        </div>
+
+        <div id="book_basket_sell">
+            <div><a href="#">
+                <button id="book_basket_btn">장바구니</button>
+            </a></div>
+            <div><a href="#">
+                <button id="book_sell_btn">바로구매</button>
+            </a></div>
+        </div>
+
+        <div id="detail_table">
+            <table>
+                <tr id="detail_table_tr1">
+                    <td class="detail_table_td1">책 설명</td>
+                    <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                    <td class="detail_table_td2">{{book_detail}}</td>
+                </tr>
+                <tr id="detail_table_tr2">
+                    <td class="detail_table_td1">책소개</td>
+                    <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td>
+                    <td class="detail_table_td2"><br><br>
+                        {{book_infor}}
+
+                    </td>
+                    <br>
+                    <br>
+                </tr>
+            </table>
+        </div>
+    {{/register}}
+</div>
+
+</body>
+
+
+</html>
+<!--<div id="comment">-->
+<!--    {{>Comments/_comments}}-->
+<!--</div>-->
+
+
