@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전체 회원 정보 보기</title>
+    <style>
+        body {
+         background-color: white;
+       }
+
+       a {
+         text-decoration: none;
+       }
+
+
+       /* 왼쪽 메뉴창 부분 */
+       #control_container {
+         position: absolute;
+         top: 240px;
+         left: 600px;
+       }
+
+
+       a {
+         color: black;
+       }
+
+       #control_2 {
+         position: absolute;
+         top: 50px;
+       }
+
+
+       #control_2_p {
+
+         width: 160px;
+         height: 120px;
+         border-bottom: 1px solid rgb(189, 189, 189);
+         background-color: #e90fc5;
+         text-align: center;
+       }
+
+       #control_2_p p {
+         font-size: 20px;
+         color: white;
+       }
+
+       .control_2_1 {
+         width: 160px;
+         height: 40px;
+         border-bottom: 1px solid #e90fc5;
+         padding: 20px 0 0 0;
+       }
+
+
+
+       /*  메인 부분 */
+
+       .Resiter_container {
+         position: absolute;
+         top: 50px;
+         left: 250px;
+       }
+
+       .page_title {
+         width: 240px;
+         height: 50px;
+         background-color: rgb(72, 199, 21);
+         color: white;
+         border-radius: 10px;
+       }
+
+       .page_title span {
+         position: absolute;
+         top: 10px;
+         font-size: 20px;
+       }
+
+       .next_btn1 {
+         width: 180px;
+         height: 30px;
+         background-color: red;
+         border-radius: 10px;
+         border: 0;
+         font-size: 15px;
+         color: rgb(244, 239, 239);
+       }
+
+       .next_btn2 {
+         width: 180px;
+         height: 30px;
+         background-color: rgb(255, 0, 242);
+         border-radius: 10px;
+         border: 0;
+         font-size: 15px;
+         color: rgb(244, 239, 239);
+       }
+
+       .next_btn3 {
+         width: 180px;
+         height: 30px;
+         background-color: rgb(35, 22, 151);
+         border-radius: 10px;
+         border: 0;
+         font-size: 15px;
+         color: rgb(244, 239, 239);
+       }
+
+        .next_btn4 {
+         width: 180px;
+         height: 30px;
+         background-color: rgb(0, 0, 0);
+         border-radius: 10px;
+         border: 0;
+         font-size: 15px;
+         color: rgb(244, 239, 239);
+       }
+
+
+       table,
+       tr,
+       td {
+         border: 1px solid rebeccapurple;
+         border-collapse: collapse;
+       }
+
+       table {
+         width: 920px;
+       }
+
+       td {
+         width: 230px;
+       }
+
+       tr {
+         height: 50px;
+       }
+
+       table span {
+         color: rgb(23, 136, 139);
+       }
+
+        .book_title {
+        font-size: 20px;
+        color: black;
+        font-weight: bold;}
+
+
+    </style>
+</head>
+
+<body>
+<div id="control_container">
+
+    <!-- 왼쪽 메뉴 부분 -->
+    <div id="control_1">
+        <a href="#">홈</a> >
+        <a href="#">관리자페이지</a> >
+        <a href="#">회원관리</a> >
+        <a href="#">전체회원목록</a>
+    </div>
+
+
+    <div id="control_2">
+        <div id="control_2_p">
+            <br>
+            <p>관리자페이지</p>
+        </div>
+        <div class="control_2_1">
+            <a href="#">상품관리</a>
+        </div>
+        <div class="control_2_1">
+            <a href="#">회원관리</a>
+        </div>
+        <div class="control_2_1">
+            <a href="#">리뷰관리</a>
+        </div>
+        <div class="control_2_1">
+            <a href="#">일대일문의관리</a>
+        </div>
+        <div class="control_2_1">
+            <a href="#">질문및답변관리</a>
+        </div>
+    </div>
+
+
+    <!-- 메인부분 -->
+    <form class="Resiter_container" action="/books/create" method="post">
+        <div class="page_title">
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;전체 회원 목록</span>
+        </div>
+
+        <br>
+        <br>
+{{#member}}
+        <div class="next_btn">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/members/{{id}}/edit">
+            <button type="button" class="next_btn1">회원 정보 수정하기
+            </button>
+        </a>
+            &nbsp;&nbsp;<a href="/members/{{id}}/delete">
+            <button type="button" class="next_btn2">회원 강제 탈퇴
+            </button>
+        </a>
+            &nbsp;&nbsp;<a href="/AllMembers">
+            <button type="button" class="next_btn3">전체 회원 보기</button>
+        </a>
+        </div>
+        <br>
+        <br>
+    {{/member}}
+
+        {{#memberList}}
+            <table>
+                <tr>
+                    <td colspan="3"><a href="members/{{id}}"> <span
+                            class="book_title">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{member_name}}</span></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>&nbsp;<span>아이디:&nbsp</span> {{member_id}}</td>
+                    <td>&nbsp;<span>이메일:&nbsp</span> {{member_mail}}</td>
+                    <td>&nbsp;<span>닉네임:&nbsp</span> {{member_nickname}}</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;<span>회원 연락처:&nbsp</span> {{member_phone}}</td>
+                    <td>&nbsp;<span>추천인 ID:&nbsp</span> {{#recommend_id}}{{recommend_id}}{{/recommend_id}}
+                        {{^recommend_id}}N{{/recommend_id}}</td>
+                </tr>
+
+                <tr>
+                    <td>&nbsp;<span>우편번호:&nbsp</span>{{#postcode}}{{postcode}}{{/postcode}}
+                        {{^postcode}}N{{/postcode}}</td>
+                    <td>&nbsp;<span>회원 주소:&nbsp</span>{{#member_addr}}{{member_addr}}{{/member_addr}}
+                        {{^member_addr}}N{{/member_addr}}</td>
+                    <td>&nbsp;<span>회원 상세주소:&nbsp</span>{{#member_addr_2}}{{member_addr_2}}{{/member_addr_2}}
+                        {{^member_addr_2}}N{{/member_addr_2}}</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;<span>환불계좌은행:&nbsp</span>{{#bank_name}}{{bank_name}}{{/bank_name}}
+                        {{^bank_name}}N{{/bank_name}}</td>
+                    <td>&nbsp;<span>환불계좌번호:&nbsp</span>{{#bankAccount}}{{bankAccount}}{{/bankAccount}}
+                        {{^bankAccount}}N{{/bankAccount}}</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;<span>이머니:&nbsp</span>{{#e_money}}{{e_money}}{{/e_money}}
+                        {{^e_money}}N{{/e_money}}</td>
+                    <td>&nbsp;<span>사용자 권한:&nbsp</span>{{#member_role}}{{member_role}}{{/member_role}}
+                        {{^member_role}}N{{/member_role}}</td>
+                    <td>&nbsp;<span>적립금:&nbsp</span>{{#member_mileage}}{{member_mileage}}{{/member_mileage}}
+                        {{^member_mileage}}N{{/member_mileage}}</td>
+                </tr>
+                <tr>
+                    <td colspan="10"><span>참고사항:&nbsp</span>{{#member_detail}}{{member_detail}}{{/member_detail}}
+                        {{^member_detail}}N{{/member_detail}}</td>
+                </tr>
+
+            </table>
+        <br>
+        {{/memberList}}
+
+        <br>
+        <br>
+
+        <div class="next_btn">
+
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/members/{{id}}/edit">
+                <button type="button" class="next_btn1">회원 정보 수정하기
+                </button>
+            </a>
+                &nbsp;&nbsp;<a href="/members/{{id}}/delete">
+                <button type="button" class="next_btn2">회원 강제 탈퇴
+                </button>
+            </a>
+                &nbsp;&nbsp;<a href="/AllMembers">
+                <button type="button" class="next_btn3">전체 회원 보기</button>
+            </a>
+            </div>
+    </form>
+</div>
+
+</body>
+
+
+</html>
+

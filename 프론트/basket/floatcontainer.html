@@ -1,0 +1,345 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>SmoothMovingLayer Demo</title>
+    <script type="text/javascript">
+        //<![CDATA[
+        function initMoving(target, position, topLimit, btmLimit) {
+            if (!target) return false;
+
+            var obj = target;
+            var initTop = position;
+            var bottomLimit = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight) - btmLimit - obj.offsetHeight;
+            var top = initTop;
+
+            obj.style.position = 'absolute';
+
+            if (typeof (window.pageYOffset) == 'number') {	//WebKit
+                var getTop = function () {
+                    return window.pageYOffset;
+                }
+            } else if (typeof (document.documentElement.scrollTop) == 'number') {
+                var getTop = function () {
+                    return Math.max(document.documentElement.scrollTop, document.body.scrollTop);
+                }
+            } else {
+                var getTop = function () {
+                    return 0;
+                }
+            }
+
+            if (self.innerHeight) {	//WebKit
+                var getHeight = function () {
+                    return self.innerHeight;
+                }
+            } else if (document.documentElement.clientHeight) {
+                var getHeight = function () {
+                    return document.documentElement.clientHeight;
+                }
+            } else {
+                var getHeight = function () {
+                    return 500;
+                }
+            }
+
+            function move() {
+                if (initTop > 0) {
+                    pos = getTop() + initTop;
+                } else {
+                    pos = getTop() + getHeight() + initTop;
+                }
+
+                if (pos > bottomLimit)
+                    pos = bottomLimit;
+                if (pos < topLimit)
+                    pos = topLimit;
+
+                interval = top - pos;
+                top = top - interval / 3;
+                obj.style.top = top + 'px';
+
+                window.setTimeout(function () {
+                    move();
+                }, 25);
+            }
+
+            function addEvent(obj, type, fn) {
+                if (obj.addEventListener) {
+                    obj.addEventListener(type, fn, false);
+                } else if (obj.attachEvent) {
+                    obj['e' + type + fn] = fn;
+                    obj[type + fn] = function () {
+                        obj['e' + type + fn](window.event);
+                    }
+                    obj.attachEvent('on' + type, obj[type + fn]);
+                }
+            }
+
+            addEvent(window, 'load', function () {
+                move();
+            });
+        }
+        //]]>
+    </script>
+    <link href="./basket.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <div class="head">
+        <h2>웹사이트 헤더</h2>
+    </div>
+
+    <div id="gotop">
+        <div class="money_title">계산서</div>
+        <div class="money_detail">
+            <table>
+                <thead>
+                    <tr>
+                        <th>총 상품 금액</th>
+                        <th>택배비</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="money_result">
+            <input type="text" id="sum" size="5" value="3000">
+        </div>
+        <button type="submit" class="btn_regst" value="regstri">
+            <span class="btn_txt">구매</span>
+        </button>
+    </div>
+
+    <div class="container">
+        <div class="title_wrapper">
+            <div class="basket_title">
+                <img src="https://www.bookoa.co.kr/assets/images/icons/48-px-basket-active.svg">
+                <span><h2>장바구니</h2></span>      
+            
+            </div>
+            <div class="basket_title">
+                <img src="https://www.bookoa.co.kr/assets/images/icons/48-px-payment-normal.svg">
+                <span><h2>주문서</h2></span>      
+            
+            </div>
+        </div>
+        <div class="content">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="padding-left:5px;">
+                            <input type="checkbox" id="check_all" onclick="toggleAll(this)">
+                            <label for="check_all">전체</label>
+                        </th>
+                        <th>상품정보</th>
+                        <th>판매가</th>
+                        <th>수량</th>
+                        <th>배송비</th>
+                        <th>선택</th>
+                    </tr>
+                </thead>
+                <tbody style="border-bottom: 1px solid black;">
+                    <tr>
+                        <td>
+                            <input type="checkbox" id="ck1" onclick="nightlight()" value="12000">
+                        </td>
+                        <td>이방인</td>
+                        <td>12000원</td>
+                        <td>1개</td>
+                        <td>3000원</td>
+                        <td><button type="button" onclick="deleteRow(this)">삭제</button></td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <input type="checkbox" id="ck2" onclick="nightlight()" value="12000">
+                        </td>
+                        <td>이방인</td>
+                        <td>12000원</td>
+                        <td>1개</td>
+                        <td>3000원</td>
+                        <td><button type="button" onclick="deleteRow(this)">삭제</button></td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <input type="checkbox" id="ck3" onclick="nightlight()" value="12000">
+                        </td>
+                        <td>이방인</td>
+                        <td>12000원</td>
+                        <td>1개</td>
+                        <td>3000원</td>
+                        <td><button type="button" onclick="deleteRow(this)">삭제</button></td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <input type="checkbox" id="ck4" onclick="nightlight()" value="12000">
+                        </td>
+                        <td>이방인</td>
+                        <td>12000원</td>
+                        <td>1개</td>
+                        <td>3000원</td>
+                        <td><button type="button" onclick="deleteRow(this)">삭제</button></td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <input type="checkbox" id="ck5" onclick="nightlight()" value="12000">
+                        </td>
+                        <td>이방인</td>
+                        <td>12000원</td>
+                        <td>1개</td>
+                        <td>3000원</td>
+                        <td><button type="button" onclick="deleteRow(this)">삭제</button></td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <input type="checkbox" id="ck6" onclick="nightlight()" value="12000">
+                        </td>
+                        <td>이방인</td>
+                        <td>12000원</td>
+                        <td>1개</td>
+                        <td>3000원</td>
+                        <td><button type="button" onclick="deleteRow(this)">삭제</button></td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <input type="checkbox" id="ck7" onclick="nightlight()" value="12000">
+                        </td>
+                        <td>이방인</td>
+                        <td>12000원</td>
+                        <td>1개</td>
+                        <td>3000원</td>
+                        <td><button type="button" onclick="deleteRow(this)">삭제</button></td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <input type="checkbox" id="ck8" onclick="nightlight()" value="12000">
+                        </td>
+                        <td>이방인</td>
+                        <td>12000원</td>
+                        <td>1개</td>
+                        <td>3000원</td>
+                        <td><button type="button" onclick="deleteRow(this)">삭제</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div id="footer">웹 사이트 하단</div>
+    <script type="text/javascript">
+        function deleteRow(button) {
+            // 클릭된 버튼의 부모 요소인 <tr>을 찾아서 삭제
+            var row = button.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+            updateTotal();
+            checkAllSelected();
+        }
+
+        // 전체 체크
+        function toggleAll(source) {
+            var checkboxes = document.querySelectorAll('tbody input[type="checkbox"]');
+            checkboxes.forEach(function (checkbox) {
+                checkbox.checked = source.checked;
+            });
+            updateTotal();
+        }
+
+        function updateTotal() {
+            var checkboxes = document.querySelectorAll('tbody input[type="checkbox"]:checked');
+            var total = 3000;
+            checkboxes.forEach(function (checkbox) {
+                total += parseInt(checkbox.value);
+            });
+            document.getElementById("sum").value = total;
+        }
+
+        function nightlight() {
+            updateTotal();
+            checkAllSelected();
+        }
+
+        function checkAllSelected() {
+            var allCheckboxes = document.querySelectorAll('tbody input[type="checkbox"]');
+            var allChecked = true;
+            allCheckboxes.forEach(function (checkbox) {
+                if (!checkbox.checked) {
+                    allChecked = false;
+                }
+            });
+            document.getElementById("check_all").checked = allChecked;
+        }
+
+        window.onload = function () {
+            initMoving(document.getElementById("gotop"), 50, 50, 50);
+        }
+
+        function initMoving(target, position, topLimit, btmLimit) {
+            if (!target) return false;
+
+            var obj = target;
+            var initTop = position;
+            var bottomLimit = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight) - btmLimit - obj.offsetHeight;
+            var top = initTop;
+
+            obj.style.position = 'absolute';
+
+            var getTop = (typeof window.pageYOffset == 'number') ? function () {
+                return window.pageYOffset;
+            } : (typeof document.documentElement.scrollTop == 'number') ? function () {
+                return Math.max(document.documentElement.scrollTop, document.body.scrollTop);
+            } : function () {
+                return 0;
+            };
+
+            var getHeight = (self.innerHeight) ? function () {
+                return self.innerHeight;
+            } : (document.documentElement.clientHeight) ? function () {
+                return document.documentElement.clientHeight;
+            } : function () {
+                return 500;
+            };
+
+            function move() {
+                var pos = (initTop > 0) ? getTop() + initTop : getTop() + getHeight() + initTop;
+
+                if (pos > bottomLimit) pos = bottomLimit;
+                if (pos < topLimit) pos = topLimit;
+
+                var interval = top - pos;
+                top = top - interval / 3;
+                obj.style.top = top + 'px';
+
+                window.setTimeout(function () {
+                    move();
+                }, 25);
+            }
+
+            function addEvent(obj, type, fn) {
+                if (obj.addEventListener) {
+                    obj.addEventListener(type, fn, false);
+                } else if (obj.attachEvent) {
+                    obj['e' + type + fn] = fn;
+                    obj[type + fn] = function () {
+                        obj['e' + type + fn](window.event);
+                    }
+                    obj.attachEvent('on' + type, obj[type + fn]);
+                }
+            }
+
+            addEvent(window, 'load', function () {
+                move();
+            });
+        }
+
+        initMoving(document.getElementById("gotop"), 50, 50, 50);
+    </script>
+
+</body>
+
+</html>
