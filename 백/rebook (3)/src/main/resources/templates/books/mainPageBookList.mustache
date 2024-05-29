@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #mainpage_book_wrapper {
+            display: grid;
+            grid-template-columns: 200px 200px 200px 200px 200px;
+            grid-template-rows: 280px 280px 280px;
+            grid-gap: 20px 10px;
+        }
+
+        #mainpage_book_wrapper a{
+            text-decoration: none;
+        }
+
+        .mainpage_book_item {
+            border: 1px solid rgb(15, 23, 52);
+        }
+
+        .mainpage_book_item img {
+        width: 140px;
+        height: 180px;
+        margin: 0 20px;
+        }
+
+        .mainpage_book_item p {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+<div id="mainpage_book_wrapper">
+    {{#registerList}}
+        <div class="mainpage_book_item">
+            <a href="{{id}}/bookintro">
+                <img src="#">
+                <p class="new_book_intro_p">&nbsp;&nbsp;{{book_title}}&nbsp;&nbsp;</p>
+                <p>{{sell_price}}</p>
+            </a>
+        </div>
+    {{/registerList}}
+</div>
+</body>
+
+</html>
