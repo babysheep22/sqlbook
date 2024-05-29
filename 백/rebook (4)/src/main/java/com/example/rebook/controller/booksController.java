@@ -30,13 +30,13 @@ public class booksController {
     private CommentService commentService;
 
     //상품등록페이지
-    @GetMapping("/books/register")
-    public String newtForm() {
-        return "books/register";
+    @GetMapping("/admin/register")
+    public String newForm() {
+        return "admin/register";
     }
 
     //등록한 상품 저장하기
-    @PostMapping("/books/create")
+    @PostMapping("/admin/create")
     public String createbooks(booksForm form) {
         System.out.println(form.toString());
 
@@ -46,11 +46,11 @@ public class booksController {
 
         Register saved = regiRepository.save(register);
         System.out.println(saved.toString());
-        return "redirect:" + saved.getId();
+        return "redirect:/admin/" + saved.getId();
     }
 
     //관리자가 상품 개별 정보 호출
-    @GetMapping("/books/{id}")
+    @GetMapping("/admin/{id}")
     public String book_show(@PathVariable Long id, Model model) {
         //log.info("id = " + id);
         System.out.println("id = " + id);
@@ -60,27 +60,25 @@ public class booksController {
 
         model.addAttribute("register", register);
 
-        return "books/IdBook";
+        return "admin/IdBook";
     }
 
     //관리자가 모든 상품 호출
-    @GetMapping("/AllBooks")
+    @GetMapping("/admin/AllBooks")
     public String Allbooks_show(Model model) {
 
         ArrayList<Register> registerList = regiRepository.findAll();
-
-
 
         //리스트의 길이
         // System.out.println(registerList.toArray().length);
 
         model.addAttribute("registerList", registerList);
-        return "books/AllBooks";
+        return "admin/AllBooks";
 
     }
 
     //관리자가 개별 상품 정보 수정하기
-    @GetMapping("/books/{id}/edit")
+    @GetMapping("/admin/{id}/edit")
     public String edit(@PathVariable Long id, Model model) {
         //log.info("id = " + id);
         System.out.println("id = " + id);
@@ -88,12 +86,12 @@ public class booksController {
         Register register = regiRepository.findById(id).orElse(null);
 
         model.addAttribute("register", register);
-        return "books/BookEdit";
+        return "admin/BookEdit";
     }
 
 
     //관리자가 개별상품 수정한 정보 업데이트하기
-    @PostMapping("/books/update")
+    @PostMapping("/admin/update")
     public String update(booksForm form) {
         log.info(form.toString());
 
@@ -110,7 +108,7 @@ public class booksController {
     }
 
     //관리자가 상품 삭제하기
-    @GetMapping("/books/{id}/delete")
+    @GetMapping("/admin/{id}/delete")
     public String delete(@PathVariable Long id, RedirectAttributes rttr) {
         log.info("삭제 요청이 들어왔습니다.");
 
@@ -122,14 +120,13 @@ public class booksController {
             rttr.addFlashAttribute("msg", "삭제 되었습니다!");
         }
 
-        return "redirect:/AllBooks";
+        return "redirect:/admin/AllBooks";
     }
 
     //고객이 소분류페이지 호출
     @GetMapping("/books/sortPage")
     public String sortPage(Model model) {
         ArrayList<Register> registerList = regiRepository.findAll();
-
 
 
         //리스트의 길이
@@ -152,11 +149,10 @@ public class booksController {
 
     }
 
-    @GetMapping("/books/mainPage")
+    @GetMapping("/books/mainpage")
     public String mainPage(Model model) {
 
         ArrayList<Register> registerList = regiRepository.findAll();
-
 
 
         //리스트의 길이
@@ -166,5 +162,4 @@ public class booksController {
         return "books/mainPageBookList";
 
     }
-
 }
