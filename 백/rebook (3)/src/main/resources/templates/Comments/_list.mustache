@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+            crossorigin="anonymous"></script>
+    <title>댓글보기</title>
+    <style>
+        /* 별점 리뷰 */
+#review_view {
+  position: absolute;
+  top: 1800px;
+  left: 750px;
+}
+
+.star fieldset {
+  display: inline-block;
+  direction: rtl;
+  /*정렬을 right에서 left로*/
+  border: 0;
+}
+
+.star fieldset legend {
+  text-align: right;
+}
+
+.star input[type=radio] {
+  display: none;
+  position: absolute;
+  top: -300px;
+}
+
+.star label {
+  font-size: 3em;
+  color: transparent;
+  /*transparent 별을 투명하게*/
+  text-shadow: 0 0 0 #f0f0f0;
+}
+
+.star label:hover~label {
+  text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+
+.star label:hover {
+  text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+
+.star input[type=radio]:checked~label {
+  text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+
+.review_add label {
+  font-size: 15px;
+  color: black;
+}
+
+#review_box {
+  width: 700px;
+  box-sizing: border-box;
+  display: inline-block;
+  margin: 15px 0;
+  background: #F3F4F8;
+  border: 0;
+  border-radius: 10px;
+  height: 100px;
+  resize: none;
+  padding: 15px;
+  font-size: 13px;
+  font-family: sans-serif;
+}
+
+#review_modify_btn {
+  display: block;
+  width: 400px;
+  font-weight: bold;
+  border: 0;
+  border-radius: 10px;
+  max-height: 50px;
+  padding: 15px 0;
+  font-size: 15px;
+  text-align: center;
+  background: blue;
+  color: white;
+}
+
+ .review_h2 {
+  position: absolute;
+  top: 1750px;
+  left: 750px;
+  color: rgb(182, 153, 118);
+  width: 200px;
+}
+
+        #comment-update-btn, #edit-comment-body  {
+        width: 450px;
+        }
+    </style>
+
+</head>
+
+<body>
+<div id="review_view">
+    <h2 class="review_view_h2">리뷰 보기</h2>
+    <div class="book_intro_review">
+        {{#commentsDtos}}
+            <div id="review_nickname"><span>닉네임</span>
+
+                <span>{{modifiedDate}}</span></div>
+
+            <div id="review_box">{{body}}</div>
+            <button type="button" class="btn btn-sm btn-outline-primary"
+                    data-bs-toggle="modal"
+                    data-bs-target="#commit-edit-modal"
+                    data-bs-id="{{id}}"
+                    data-bs-body="{{body}}"
+                    data-bs-register-id="{{registerId}}">
+                수정하기
+            </button>
+            <!--    댓글    삭제버튼-->
+            <button type="button" class="btn btn-sm btn-outline-danger comment-delete-btn"
+                     data-comment-id="{{id}}">삭제하기
+            </button>
+        {{/commentsDtos}}
+
+        {{#register}}
+            <input type="hidden" id="register_id" value="{{id}}">
+        {{/register}}
+
+    </div>
+
+
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="commit-edit-modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">댓글 수정</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form class="star_new">
+                    <!--            <fieldset>-->
+                    <!--          <span class="star_new">별점을-->
+                    <!--            선택해주세요</span>-->
+                    <!--                <input type="radio" name="reviewStar" value="5" id="rate1"><label for="rate1">★</label>-->
+                    <!--                <input type="radio" name="reviewStar" value="4" id="rate2"><label for="rate2">★</label>-->
+                    <!--                <input type="radio" name="reviewStar" value="3" id="rate3"><label for="rate3">★</label>-->
+                    <!--                <input type="radio" name="reviewStar" value="2" id="rate4"><label for="rate4">★</label>-->
+                    <!--                <input type="radio" name="reviewStar" value="1" id="rate5"><label for="rate5">★</label>-->
+
+                    <!--            </fieldset>-->
+
+
+                    <!--댓글 수정 폼-->
+                    <div>
+                        <textarea type="text" id="edit-comment-body" placeholder="리뷰를 작성해주세요." rows="3" required></textarea>
+                    </div>
+
+                    <input type="hidden" id="edit-comment-id">
+                    <input type="hidden" id="edit-comment-register-id">
+
+
+                    <div>
+                        <button type="button" class="review_write_btn" id="comment-update-btn">수정 완료</button>
+                    </div>
+                </form>
+            </div>
+            <!--            <div class="modal-footer">-->
+            <!--                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>-->
+            <!--                <button type="button" class="btn btn-primary">저장하기</button>-->
+            <!--            </div>-->
+        </div>
+    </div>
+</div>
+
+<!--댓글 수정-->
+<script>
+    {
+    //모달 요소 선택
+    const commentEditModal = document.querySelector("#commit-edit-modal");
+    //모달 이벤트 감지
+    commentEditModal.addEventListener("show.bs.modal", function(event) {
+    //1.트리거 버튼 선택
+    const triggerBtn = event.relatedTarget;
+
+    //2. 데이터 가져오기
+    const id = triggerBtn.getAttribute("data-bs-id");
+    const body = triggerBtn.getAttribute("data-bs-body");
+    const registerId = triggerBtn.getAttribute("data-bs-register-id");
+
+     //3. 수정 폼에 데이터 반영
+    document.querySelector("#edit-comment-body").value = body;
+    document.querySelector("#edit-comment-id").value = id;
+    document.querySelector("#edit-comment-register-id").value = registerId;
+    });
+
+
+    {
+    //수정완료버튼 선택
+    const commentUpdateBtn = document.querySelector("#comment-update-btn");
+
+    //클릭 이벤트 처리
+     commentUpdateBtn.addEventListener("click", function() {
+     //수정 댓글 객체 생성
+     const comment = {
+     id: document.querySelector("#edit-comment-id").value,
+     body:  document.querySelector("#edit-comment-body").value,
+     register_id: document.querySelector("#edit-comment-register-id").value
+     };
+     console.log(comment);
+
+     //수정 REST API 호출
+     const url = "/comments/" + comment.id;
+     fetch(url, {
+     method: "PATCH",  //PATCH요청
+     headers: {   //전송 데이터타입(JSON) 정보
+     "Content-type": "application/json"
+     },
+     body: JSON.stringify(comment)  //cpmment객체를 JSON 문자열로 변환 전송
+     }).then(response => {
+     //HTTP 응답 코드에 따른 메시지 출력
+     const msg = (response.ok) ? "댓글이 수정되었습니다." : "댓글 수정 실패!";
+     alert(msg);
+     //현재 페이지 새로 고침
+     window.location.reload();
+    });
+    });
+    }
+   }
+</script>
+
+<!--댓글 삭제-->
+<script>
+    {
+        // 댓글 삭제 버튼
+        const commentDeleteBtns = document.querySelectorAll(".comment-delete-btn");
+
+        commentDeleteBtns.forEach(btn => {
+        btn.addEventListener("click", (event) => {
+        //이벤트 발생 요소 선택
+        const commentDeleteBtn = event.target;
+        //삭제 댓글 id 가져오기
+        const commentId = commentDeleteBtn.getAttribute("data-comment-id");
+        console.log("삭제 버튼 클릭: "  + commentId + "번 댓글");
+
+        //삭제 REST API 호출
+        const url =  "/comments/" + commentId;
+
+        fetch(url, {
+        method: "DELETE"
+        }).then(response => {
+        //댓글 삭제 실패 처리
+        if (!response.ok) {
+        alert("댓글 삭제 실패");
+        return;
+        }
+        //삭제 성공시 댓글을 화면에서 지우고 메시지 창 띄우기
+        const target = document.querySelector(`#comments-${commentId}`);
+
+        const msg = `${commentId}번 댓글을 삭제했습니다.`;
+        alert(msg);
+        //현재 페이지 새로 고침
+        window.location.reload();
+        });
+     });
+
+       });
+
+
+}
+
+</script>
+
+
+</body>
+
+</html>

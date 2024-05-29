@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>매입신청도서입력정보보기</title>
+    <style>
+        .idpurchase_container {
+            position: absolute;
+            top: 240px;
+            left: 600px;
+        }
+
+        .idpurchase_container table,
+        .idpurchase_container tr,
+        .idpurchase_container td {
+            border: 1px solid rgb(0, 128, 255);
+            border-collapse: collapse;
+        }
+
+        .idpurchase_container td {
+            width: 250px;
+            height: 40px;
+            font-size: 15px;
+        }
+
+        #idpur_p1 {
+            font-size: 30px;
+            color: rgb(0, 128, 255);
+            font-weight: bold;
+        }
+
+        #idpur_p2 {
+            font-size: 20px;
+            color: rgb(0, 128, 255);
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+<div class="idpurchase_container">
+    <h1 id="idpur_p1">[매입신청한 도서 정보 보기]</h1>
+
+<table>
+    {{#purchaseItem}}
+        <tr>
+            <td colspan="2">&nbsp;책제목:&nbsp;{{#purTitle}}{{purTitle}}{{/purTitle}}
+                {{^purTitle}}N{{/purTitle}}</td>
+            <td>&nbsp;저자:&nbsp;{{#purAuthor}}{{purAuthor}}{{/purAuthor}}
+                {{^purAuthor}}N{{/purAuthor}}</td>
+            <td>출판사:&nbsp;{{#purPuB}}{{purPuB}}{{/purPuB}}
+                {{^purPuB}}N{{/purPuB}}</td>
+
+        </tr>
+        <tr>
+            <td>&nbsp;출판일:&nbsp;{{#purPubDate}}{{purPubDate}}{{/purPubDate}}
+                {{^purPubDate}}N{{/purPubDate}}</td>
+            <td>&nbsp;예상 도서 등급:&nbsp;{{#purBookCondition}}{{purBookCondition}}{{/purBookCondition}}
+                {{^purBookCondition}}N{{/purBookCondition}}</td>
+            <td>&nbsp;예상 가격:&nbsp;{{#purReqPrice}}{{purReqPrice}}{{/purReqPrice}}
+                {{^purReqPrice}}N{{/purReqPrice}}</td>
+            <td>출판사:&nbsp;{{#createdDate}}{{createdDate}}{{/createdDate}}
+                {{^createdDate}}N{{/createdDate}}</td>
+        </tr>
+        <tr rowspan="8">
+            <td colspan="4">{{#purImgs}}{{purImgs}}{{/purImgs}}
+                {{^purImgs}}N{{/purImgs}}</td>
+        </tr>
+        <tr rowspan="8">
+            <td colspan="4">{{#purBookDetail}}{{purBookDetail}}{{/purBookDetail}}
+                {{^purBookDetail}}N{{/purBookDetail}}</td>
+        </tr>
+    </table>
+    {{/purchaseItem}}
+</div>
+
+</body>
+
+</html>
