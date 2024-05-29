@@ -184,7 +184,7 @@
 
 
     <!-- 메인부분 -->
-    <form class="Resiter_container" action="/books/create" method="post">
+    <form class="Resiter_container" action="/admin/create" method="post">
         <div class="page_title">
             <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;도서 목록 조회</span>
         </div>
@@ -193,7 +193,7 @@
         <br>
         <br>
         <div class="next_btn">
-            <a href="/books/register">
+            <a href="/admin/register">
                 <button type="button" class="next_btn1">도서등록
                     바로가기
                 </button>
@@ -208,8 +208,8 @@
 
 
                 <tr>
-                    <td colspan="4"><a href="books/{{id}}"><span
-                            class="book_title">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{book_title}}</span></a>({{book_id}})
+                    <td colspan="4"><a href="/admin/{{id}}"><span
+                        class="book_title">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{book_title}}</span></a>({{book_id}})
                     </td>
                 </tr>
                 <tr>
@@ -248,7 +248,7 @@
         <br>
 
         <div class="next_btn">
-            <a href="/books/register">
+            <a href="/admin/register">
                 <button type="button" class="next_btn1">도서등록
                     바로가기
                 </button>

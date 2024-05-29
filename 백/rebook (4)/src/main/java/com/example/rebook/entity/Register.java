@@ -23,6 +23,7 @@ import java.util.stream.Collectors;
 @Getter
 @Entity
 @NoArgsConstructor
+@Table(name = "items")
 public class Register extends BaseTimeEntity{
 
 
