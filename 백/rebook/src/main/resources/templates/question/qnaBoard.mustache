@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>묻고 답하기</title>
+    <style>
+        .a_a_border_wrap {
+          width: 1000px;
+          margin: 100px auto;
+        }
+
+        .a_a_border_title {
+          margin-bottom: 30px;
+        }
+
+        .a_a_border_title strong {
+          font-size: 3rem;
+        }
+
+        .a_a_border_title p {
+          margin-top: 5px;
+          font-size: 1.4rem;
+        }
+
+        .a_a_border_write {
+          border-top: 2px solid #000;
+        }
+
+        .a_a_border_write .title,
+        .a_a_border_write .info {
+          padding: 15px;
+        }
+
+        .a_a_border_write .title dt,
+        .a_a_border_write .title dd,
+        .a_a_border_write .info dt,
+        .a_a_border_write .info dd {
+          display: inline-block;
+          font-size: 1.4rem;
+        }
+
+        .a_a_border_write .title dt,
+        .a_a_border_write .info dt {
+          width: 100px;
+        }
+
+        .a_a_border_write .title input[type="text"],
+        .a_a_border_write .info input[type="text"],
+        .a_a_border_write .info input[type="password"] {
+          padding: 10px;
+          box-sizing: border-box;
+          border: 0;
+
+        }
+
+        .a_a_border_write .title dd {
+
+          width: calc(100% - 100px);
+        }
+
+
+
+
+        .a_a_border_write .title input[type="text"] {
+          width: 600px;
+
+        }
+
+
+
+
+        .a_a_border_write .info {
+          border-top: dashed 1px #ddd;
+          border-bottom: 1px solid #000;
+          font-size: 15px;
+          height: 20px
+
+        }
+
+        .a_a_border_write .content {
+          border-bottom: 1px solid #000;
+        }
+
+        .a_a_border_write .content textarea {
+          display: block;
+          width: 100%;
+          height: 300px;
+          padding: 15px;
+          border: 0;
+          resize: vertical;
+        }
+
+        .a_a_bt_wrap {
+          margin-top: 30px;
+          text-align: center;
+        }
+
+        .a_a_bt_wrap button {
+          display: inline-block;
+          min-width: 80px;
+          padding: 10px;
+          border: 1px solid #000;
+          border-radius: 2px;
+          font-size: 1.4rem;
+        }
+
+        .a_a_bt_wrap button:first-child {
+          margin-left: 0;
+        }
+
+        .a_a_bt_wrap button.on {
+          background: #000;
+          color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+<div class="a_a_border_wrap">
+    <div class="a_a_border_title">
+        <strong>묻고 답하기</strong>
+        <p>책을 읽는 아름다운 두뇌를 가진 사람들의 흔적, ReBooK</p>
+    </div>
+    <div class="a_a_border_write_wrap">
+        <form action="/question/create" method="post">
+            <div class="a_a_border_write">
+                <div class="title">
+                    <label for="qna_title">제목</label>
+                    <input type="text" placeholder="제목 입력" name="qna_title" id="qna_title">
+                </div>
+                <div class="info">
+                    <span>글쓴이&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;일시</span>
+                </div>
+                <div class="content">
+                    <textarea placeholder="내용 입력" name="qna_content"></textarea>
+                </div>
+            </div>
+            <div class="a_a_bt_wrap">
+                <button type="submit" class="on">등록</button>
+                <button type="reset">취소</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+
+</html>
