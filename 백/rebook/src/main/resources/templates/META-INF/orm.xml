@@ -5,13 +5,13 @@
                  https://jakarta.ee/xml/ns/persistence/orm/orm_3.0.xsd"
                  version="3.0">
 
-    <named-native-query name="Comment.findByNickname"
-                        result-class="com.example.rebook.entity.Comment">
-        <query>
-            <![CDATA[
-            SELECT * FROM comment WHERE nickname = :nickname]]>
-        </query>
-    </named-native-query>
+<!--    <named-native-query name="Comment.findByNickname"-->
+<!--                        result-class="com.example.rebook.entity.Comment">-->
+<!--        <query>-->
+<!--            <![CDATA[-->
+<!--            SELECT * FROM comment WHERE nickname = :nickname]]>-->
+<!--        </query>-->
+<!--    </named-native-query>-->
 
 
 </entity-mappings>
