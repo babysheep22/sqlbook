@@ -1,3 +1,4 @@
+{{>layouts/header}}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -135,13 +136,54 @@
         #comment {
             position: absolute;
             top: 300px;
-
         }
 
     </style>
 
 
 </head>
+<script>
+    function addCart(){
+            var token = $("meta[name='_csrf']").attr("content");
+            var header = $("meta[name='_csrf_header']").attr("content");
+
+            var url = "/cart";
+            var paramData = {
+                itemId : $("#itemId").val(),
+                count : $("#count").val()
+            };
+
+            var param = JSON.stringify(paramData);
+
+            $.ajax({
+                url      : url,
+                type     : "POST",
+                contentType : "application/json",
+                data     : param,
+                beforeSend : function(xhr){
+                    /* 데이터를 전송하기 전에 헤더에 csrf값을 설정 */
+                    xhr.setRequestHeader(header, token);
+                },
+                dataType : "json",
+                cache   : false,
+                success  : function(result, status){
+                    alert("상품을 장바구니에 담았습니다.");
+                    location.href='/';
+                },
+                error : function(jqXHR, status, error){
+
+                    if(jqXHR.status == '401'){
+                        alert('로그인 후 이용해주세요');
+                        location.href='/members/login';
+                    } else{
+                        alert(jqXHR.responseText);
+                    }
+
+                }
+              });
+            }
+
+</script>
 
 <!-- 바디 시작 ------------------------------------------------------------------------ -->
 
@@ -158,13 +200,15 @@
 
         </div>
         <div id="book_detail">
-            <p> <span class="book_detail_s">대주제</span> <span class="book_detail_s2"
-                                                             id="major_kategory">&nbsp&nbsp{{major_kategory}}</span>
+            <p><span class="book_detail_s">대주제</span> <span class="book_detail_s2"
+                                                            id="major_kategory">&nbsp&nbsp{{major_kategory}}</span>
 
-                <span class="book_detail_s">소주제</span><span class="book_detail_s2">&nbsp&nbsp{{minor_kategory}}</span></p>
+                <span class="book_detail_s">소주제</span><span class="book_detail_s2">&nbsp&nbsp{{minor_kategory}}</span>
+            </p>
             <br>
-            <p> <span class="book_detail_s">판매가</span><span class="book_detail_s2">&nbsp&nbsp{{sell_price}}&nbsp</span>
-                <span class="book_detail_s">정 가</span><span class="book_detail_s2">&nbsp&nbsp{{list_price}}&nbsp</span></p>
+            <p><span class="book_detail_s">판매가</span><span class="book_detail_s2">&nbsp&nbsp{{sell_price}}&nbsp</span>
+                <span class="book_detail_s">정 가</span><span class="book_detail_s2">&nbsp&nbsp{{list_price}}&nbsp</span>
+            </p>
             <br>
             <p><span class="book_title_s">출판일</span><span id="pub_date">&nbsp&nbsp{{pub_date}}</span>
                 <span class="book_title_s">&nbsp&nbsp상품등록일</span><span
@@ -183,7 +227,7 @@
 
         <div id="book_basket_sell">
             <div><a href="#">
-                <button id="book_basket_btn">장바구니</button>
+                <button id="book_basket_btn" onclick="addCart()">장바구니</button>
             </a></div>
             <div><a href="#">
                 <button id="book_sell_btn">바로구매</button>
@@ -219,5 +263,6 @@
 <!--<div id="comment">-->
 <!--    {{>Comments/_comments}}-->
 <!--</div>-->
+{{>layouts/footer}}
 
 

@@ -19,7 +19,7 @@ public class Question extends BaseTimeEntity {
     private Long id; //질문게시판 번호
 
     @ManyToOne
-    @JoinColumn(name = "member_id")
+    @JoinColumn(name = "memberid")
     private Member member;
 
     @Column
@@ -32,7 +32,7 @@ public class Question extends BaseTimeEntity {
         //예외 발생
         if (form.getId() != null)
             throw new IllegalArgumentException("질문게시글 생성 실패! 질문게시글의 id가 없어야 합니다.");
-        if (form.getMember_id() !=member.getId())
+        if (form.getMemberid() !=member.getId())
         throw new IllegalArgumentException("댓글 생성 실패! 게시글의 id가 잘못되었습니다.");
 
         return new Question(

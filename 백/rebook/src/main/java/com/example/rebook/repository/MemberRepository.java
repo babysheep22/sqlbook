@@ -9,4 +9,6 @@ import java.util.List;
 public interface MemberRepository extends CrudRepository<Member, Long> {
     @Override
     ArrayList<Member> findAll();
+
+    Member findByEmail(String member_mail);
 }

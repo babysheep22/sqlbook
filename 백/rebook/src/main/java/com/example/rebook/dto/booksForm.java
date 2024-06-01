@@ -41,6 +41,9 @@ public class booksForm {
 
     private int purchase_price;  //매입가격
 
+    private LocalDateTime createdDate;
+    private LocalDateTime modifiedDate;
+
 
     //    롬복의 리팩터링기능으로 @AllArgsConstructor가 생성자가 자동으로 만들어져서 아래 것은 필요없게 됨
 //    public booksForm(Long id, Long book_id, String book_title, String book_image, String book_author, String publisher, String pub_date, String register_date, String major_kategory, String minor_kategory, int list_price, int sell_price, String book_condition, String book_detail, String book_infor, int purchase_price) {

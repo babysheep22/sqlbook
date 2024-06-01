@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원 정보 업데이트</title>
+    <style>
+        * {
+
+            box-sizing: border-box;
+        }
+
+        body {}
+
+        .wrapper {
+            width: 100%;
+            height: 1400px;
+            display: flex;
+            justify-content: center;
+            background: #ebecf0;
+            overflow: hidden;
+
+        }
+        .wrapper form {
+            width: 700px;
+            background: #ffffff5d;
+            border-radius: 2%;
+            box-shadow: -5px -5px 10px #fff, 5px 5px 10px #c4c4c47c;
+
+
+        }
+
+        .wrapper form h1 {
+            font-size: 40px;
+            text-align: center;
+        }
+
+        .wrapper p {
+            margin-left: 65px;
+        }
+
+        .wrapper ul {
+            list-style: none;
+            margin-left: 30px;
+
+        }
+
+        .wrapper ul li {}
+
+        .wrapper ul li label {
+            display: inline-block;
+            width: 150px;
+            line-height: 55px;
+
+        }
+
+        .wrapper ul li input {
+            width: 350px;
+            line-height: 25px;
+
+
+        }
+
+        .wrapper ul li input:not(.can) {
+            background: #eee;
+            box-shadow: inset 7px 2px 10px #babebc, inset -5px -5px 12px #ffffff;
+            border: none;
+            border-radius: 5px;
+            padding-left: 15px;
+            outline: none;
+        }
+
+        .wrapper ul li button {
+            line-height: 25px;
+            border: none;
+            color: #6e6e6e;
+
+            font-weight: bold;
+            border-radius: 5px;
+
+        }
+
+        .form-button {
+            box-shadow: -5px -5px 10px #fff, 5px 5px 8px #babebc ;
+        }
+        .form-button:active {
+            box-shadow: inset 1px 1px 2px #babebc, inset -1px -1px 2px #fff;
+        }
+
+
+        .wrapper select {
+            height: 31px;
+            width: 95px;
+            background: #eee;
+            box-shadow: inset 7px 2px 10px #babebc, inset -5px -5px 12px #ffffff;
+            padding-left: 10px;
+        }
+
+        .checkbox:checked {
+            background-color: #2bb632;
+            border-color: #2bb632;
+
+
+        }
+
+        .checkbox {
+            height: 1.2em;
+            background-color: #fff;
+            border: 1px solid rgba(0, 0, 0, 0.25);
+            appearance: none;
+            position: relative;
+            left: 167px;
+            top: 7px;
+        }
+
+        .checkbox[type=checkbox] {
+            border-radius: 1em;
+        }
+
+        .checkbox[type=checkbox]:checked::before {
+            content:'✔';
+            display: inline-block;
+            font-size: 1.2em;
+            line-height: 1;
+            color: #fff;
+            position: relative;
+            top: -4px;
+
+        }
+
+        .information > a {
+            text-decoration: none;
+            color: inherit;
+            position: relative;
+            left: 165px;
+            color: #9e9e9e;
+        }
+
+        .submit {
+            width: 200px;
+            line-height: 28px;
+            background-color: #ffffff;
+            color: #000000;
+            font-weight: bold;
+            font-size: 15px;
+            border: none;
+            border-radius: 5px;
+
+        }
+
+        .b-bottom {
+            border-bottom: #fff 1.5px solid;
+            width: 514px;
+            position: relative;
+            left: -70px;
+        }
+        .c-bottom {
+            box-shadow: -5px -5px 10px #fff, 5px 5px 10px #c4c4c47c;
+        }
+        button {
+            cursor: pointer;
+        }
+
+
+        .red-square {
+            display: inline-block;
+            width: 4px;
+            height: 4px;
+            background-color: red;
+            margin-right: 10px;
+            top: -15px;
+            left: 12px;
+            position: relative;
+        }
+
+
+
+
+    </style>
+</head>
+
+<body>
+<div class="wrapper">
+
+    <form action="/members/update" method="post">
+        {{#member}}
+            <input name="id" type="hidden" value="{{id}}">
+        <header>
+            <h1>관리자 회원 정보 수정</h1>
+            <br>
+        </header>
+        <p> <span class="red-square"></span> 필수 입력사항</p>
+        <div>
+            <ul>
+                <li>
+                    <label for="name"><span class="red-square"></span>이름</label>
+                    <input type="text" id="name" name="member_name" name="{{member_name}}" >
+                </li>
+                <li>
+                    <label for="id"><span class="red-square"></span>아이디</label>
+                    <input type="text" id="id" style="width: 250px;"  name="member_id"  value="{{member_id}}">
+                    <button style="width: 95px;" class="form-button">중복확인</button>
+                </li>
+                <li>
+                    <label for="nick"><span class="red-square"></span>닉네임</label>
+                    <input type="text" id="nick" name="member_nickname" value="{{member_nickname}}">
+                </li>
+                <li>
+                    <label for="passwordInput"><span class="red-square"></span>비밀번호</label>
+                    <input type="password" id="passwordInput" name="member_password"  value="{{member_password}}">
+                </li>
+
+                <li>
+                    <label for="member_password"><span class="red-square"></span>핸드폰</label>
+                    <input type="tel" id="member_password" name="member_phone" value="{{member_phone}}" >
+                    <button style="width: 350px;" class="form-button">핸드폰인증</button>
+                </li>
+                <li>
+                    <label for="email"><span class="red-square"></span>이메일</label>
+                    <input type="email" id="email" name="member_mail"  value="{{email}}">
+                </li>
+
+                <li>
+                    <label for="id"><span class="red-square"></span>주소</label>
+                    <input type="text" id="id" style="width: 250px;"  name="member_addr"  value="{{#member_addr}}{{member_addr}}{{/member_addr}}
+                        {{^member_addr}}N{{/member_addr}}">
+                    <button style="width: 95px; font-size: 12px;" class="form-button">우편번호 검색</button>
+                    <input type="text" id="id" style="margin-left: 156px;" name="postcode"  value="{{#postcode}}{{postcode}}{{/postcode}}
+                        {{^postcode}}N{{/postcode}}">
+                </li>
+                <li>
+                    <label for="addr"><span class="red-square"></span>상세주소</label>
+                    <input type="text" id="addr"  name="member_addr_2"  value="{{#member_addr_2}}{{member_addr_2}}{{/member_addr_2}}
+                        {{^member_addr_2}}N{{/member_addr_2}}">
+                </li>
+                <li>
+                    <label for="bank"><span class="red-square"></span>환불계좌</label>
+                    <select style="border-radius: 5px; border: none; background: #eee"  class="form-button" name="bank_name">
+                        <option disabled selected style="background-color: #ccc;  font-weight: bold;">은행선택</option>
+                        <option value="option1">국민은행</option>
+                        <option value="option2">부산은행</option>
+                        <option value="option3">신한은행</option>
+                        <option value="option4">우리은행</option>
+                        <option value={{#bank_name}}{{bank_name}}{{/bank_name}}
+                            {{^bank_name}}N{{/bank_name}} selected hidden>{{#bank_name}}{{bank_name}}{{/bank_name}}
+                            {{^bank_name}}N{{/bank_name}}</option>
+                    </select>
+                    <!--                    <input type="text" id="bank" style="width: 250px;" name="bank_name">-->
+                    <input type="text" id="bank" style="margin-left: 156px;" name="bankAccount"  value="{{#bankAccount}}{{bankAccount}}{{/bankAccount}}
+                        {{^bankAccount}}N{{/bankAccount}}">
+                </li>
+                <li>
+                    <label for="bank">무통장 환불 방법</label>
+                    <input style="width: 20px;" type="radio" class="can" name="e_money" value="{{#e_money}}{{e_money}}{{/e_money}}
+                        {{^e_money}}N{{/e_money}}">
+                    <span>이머니로 환불받기</span>
+                    <input style="width: 20px;" type="radio" class="can" name="bank_name"  value="{{#bank_name}}{{bank_name}}{{/bank_name}}
+                        {{^bank_name}}N{{/bank_name}}">
+                    <span>통장으로 받기</span>
+                </li>
+
+                <li>
+                    <label for="id">추천인 아이디</label>
+                    <input type="text" id="id" style="width: 250px;" name="recommend_id"  value="{{#recommend_id}}{{recommend_id}}{{/recommend_id}}
+                        {{^recommend_id}}N{{/recommend_id}}"  >
+                    <button style="width: 94px;" class="form-button">아이디 확인</button>
+                    <div style="width: 520px; margin-left: 90px; font-size: 14px; letter-spacing: -1px;">
+                        <p>*마일리지 유효기간은 30일입니다.<br>추천인 아이디가 없으면 입력하지 않으셔도 됩니다.</p>
+                    </div>
+                </li>
+            </ul>
+            {{/member}}
+
+            <br><br>
+            <div style="text-align: center;">
+                <a href="/members/{{member.id}}"><button type="button" class="submit form-button">취소</button></a>
+                <button type="submit" class="submit form-button">수정 등록</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+                const ckTag = document.getElementById('id_a')
+                const evtBtnTag1 = document.getElementById('id_b')
+                const evtBtnTag2 = document.getElementById('id_c')
+                const evtBtnTag3 = document.getElementById('id_d')
+                const evtBtnTag4 = document.getElementById('id_e')
+
+                ckTag.addEventListener('click', (event) => {
+
+                    const chckValue = event.currentTarget.checked;
+
+                    evtBtnTag1.checked = chckValue
+                    evtBtnTag2.checked = chckValue
+                    evtBtnTag3.checked = chckValue
+                    evtBtnTag4.checked = chckValue
+
+                })
+
+                evtBtnTag1.addEventListener('click', (event) => {
+                    if (event.currentTarget.checked == false) {
+                        ckTag.checked = false;
+                    }
+                })
+                evtBtnTag2.addEventListener('click', (event) => {
+                    if (event.currentTarget.checked == false) {
+                        ckTag.checked = false;
+                    }
+                })
+                evtBtnTag3.addEventListener('click', (event) => {
+                    if (event.currentTarget.checked == false) {
+                        ckTag.checked = false;
+                    }
+                })
+                evtBtnTag4.addEventListener('click', (event) => {
+                    if (event.currentTarget.checked == false) {
+                        ckTag.checked = false;
+                    }
+                })
+            })
+
+</script>
+</body>
+
+</html>

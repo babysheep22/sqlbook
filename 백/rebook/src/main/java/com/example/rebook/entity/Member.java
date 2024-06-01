@@ -12,19 +12,19 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Member {
+public class Member extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id; //회원 번호
 
     @Column
-    private String member_id; //회원 아이디
+    private String memberid; //회원 아이디
 
     @Column
     private String member_name;  //회원 이름
 
     @Column
-    private String member_mail;  //회원 이메일
+    private String email;  //회원 이메일
 
     @Column
     private String member_password;  //회원 비밀번호
@@ -39,6 +39,9 @@ public class Member {
     private String bankAccount;  //회원 환불계좌번호
 
     @Column
+    private String bankMaster;  //회원 환불계좌예금주
+
+    @Column
     private String member_phone;  //회원 연락처
 
     @Column
@@ -51,14 +54,23 @@ public class Member {
     private String member_addr_2;  //회원 상세주소
 
     @Column
+    private String member_addr_3;  //회원 지번 주소
+
+    @Column
+    private String member_message; //참고항목
+
+    @Column
     private String recommend_id;  //추천인 아이디
 
     @Column
-    private String member_detail;  //추천인 아이디
+    private String member_detail;  //관리자가 적는 멤버에 대한 사항
 
 
     @Column
-    private String e_money;  //추천인 아이디
+    private String e_money;  //이머니로 환불
+
+    @Column
+    private String bankRefund;  //계좌로 환불
 
 
     @Column

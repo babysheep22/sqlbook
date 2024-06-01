@@ -16,15 +16,15 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Slf4j
-@Controller
+
+@RestController
 public class QuestionController {
 
     @Autowired
     private QuestionService questionService;
 
     //질문 게시판 요청
-    @GetMapping("/question/{memberId}/qnaBoard")
+    @GetMapping("/question/{memberId}/questions")
     public ResponseEntity<List<QuestionForm>> questions(@PathVariable Long memberId) {
         //서비스에 위임
         List<QuestionForm> forms = questionService.questions(memberId);
@@ -34,7 +34,7 @@ public class QuestionController {
 
 
     //질문게시글 생성
-    @PostMapping("/question/{memberId}/qnaBoard")
+    @PostMapping("/question/{memberId}/questions")
     public ResponseEntity<QuestionForm> create(@PathVariable Long memberId, @RequestBody QuestionForm form)
     {
         QuestionForm createdForm = questionService.create(memberId, form);

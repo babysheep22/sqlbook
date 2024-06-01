@@ -13,7 +13,7 @@ public interface QuestionRepository extends JpaRepository<Question, Long> {
    //모든 질문게시글 조회
     @Query(value = "SELECT * " +
             "FROM question " +
-            "WHERE member_id" +
+            "WHERE memberid" +
             "= :memberId",
             nativeQuery = true)
 
