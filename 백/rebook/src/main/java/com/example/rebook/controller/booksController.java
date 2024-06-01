@@ -149,7 +149,7 @@ public class booksController {
 
     }
 
-    @GetMapping("/books/mainpage")
+    @GetMapping("/books/mainPage")
     public String mainPage(Model model) {
 
         ArrayList<Register> registerList = regiRepository.findAll();

@@ -33,6 +33,10 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 		// @NotNull 이슈 해결위해 추가 의존성
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+//	implementation 'org.springframework.security:spring-security-core:6.0.0'
+//	implementation 'org.springframework.security:spring-security-web:6.0.0'
+//	implementation 'org.springframework.security:spring-security-config:6.0.0'
 
 }
 

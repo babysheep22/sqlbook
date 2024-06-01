@@ -18,7 +18,7 @@ public class QuestionForm {
 
     private Long id; //질문게시판 번호
 
-    private Long member_id;
+    private Long memberid;
 
     private String qna_title; //질문게시판 제목
 

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>묻고 답하기</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+            crossorigin="anonymous"></script>
+    <style>
+        .a_a_border_wrap {
+          width: 1000px;
+          margin: 100px auto;
+        }
+
+        .a_a_border_title {
+          margin-bottom: 30px;
+        }
+
+        .a_a_border_title strong {
+          font-size: 3rem;
+        }
+
+        .a_a_border_title p {
+          margin-top: 5px;
+          font-size: 1.4rem;
+        }
+
+        .a_a_border_write {
+          border-top: 2px solid #000;
+        }
+
+        .a_a_border_write .title,
+        .a_a_border_write .info {
+          padding: 15px;
+        }
+
+        .a_a_border_write .title dt,
+        .a_a_border_write .title dd,
+        .a_a_border_write .info dt,
+        .a_a_border_write .info dd {
+          display: inline-block;
+          font-size: 1.4rem;
+        }
+
+        .a_a_border_write .title dt,
+        .a_a_border_write .info dt {
+          width: 100px;
+        }
+
+        .a_a_border_write .title input[type="text"],
+        .a_a_border_write .info input[type="text"],
+        .a_a_border_write .info input[type="password"] {
+          padding: 10px;
+          box-sizing: border-box;
+          border: 0;
+
+        }
+
+        .a_a_border_write .title dd {
+
+          width: calc(100% - 100px);
+        }
+
+
+
+
+        .a_a_border_write .title input[type="text"] {
+          width: 600px;
+
+        }
+
+
+
+
+        .a_a_border_write .info {
+          border-top: dashed 1px #ddd;
+          border-bottom: 1px solid #000;
+          font-size: 15px;
+          height: 20px
+        }
+
+        .a_a_border_write .content {
+          border-bottom: 1px solid #000;
+        }
+
+        .a_a_border_write .content textarea {
+          display: block;
+          width: 100%;
+          height: 300px;
+          padding: 15px;
+          border: 0;
+          resize: vertical;
+        }
+
+        .a_a_bt_wrap {
+          margin-top: 30px;
+          text-align: center;
+        }
+
+        .a_a_bt_wrap button {
+          display: inline-block;
+          min-width: 80px;
+          padding: 10px;
+          border: 1px solid #000;
+          border-radius: 2px;
+          font-size: 1.4rem;
+        }
+
+        .a_a_bt_wrap button:first-child {
+          margin-left: 0;
+        }
+
+        .a_a_bt_wrap button.on {
+          background: #000;
+          color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+<div class="a_a_border_wrap">
+    <div class="a_a_border_title">
+        <strong>묻고 답하기</strong>
+        <p>책을 읽는 아름다운 두뇌를 가진 사람들의 흔적, ReBooK</p>
+    </div>
+    {{#questionForm}}
+    <div class="a_a_border_write_wrap">
+        <div class="title" id="qna_title"><span>제목:</span>
+
+        </div>
+        <div class="info">
+            <span>글쓴이&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;일시</span>
+        </div>
+        <div class="content">{{qna_content}}</div>
+        <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal"
+                data-bs-target="#commit-edit-modal" data-bs-id="{{id}}" data-bs-qna-title="{{qna_title}}"
+                data-bs-qna-content="{{qna_content}}" data-bs-member-id="{{memberId}}">
+            수정하기
+        </button>
+        <!--    댓글    삭제버튼-->
+        <button type="button" class="btn btn-sm btn-outline-danger comment-delete-btn" data-comment-id="{{id}}">삭제하기
+        </button>
+    {{/questionForm}}
+
+    {{#member}}
+        <input type="hidden" id="memberid" value="{{id}}">
+    {{/member}}
+</div>
+</div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="commit-edit-modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">댓글 수정</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="a_a_border_write_wrap">
+                    <form>
+                        <div class="a_a_border_write">
+                            <div class="title">
+                                <label for="qna_title">제목</label>
+                                <input type="text" placeholder="제목 입력" id="qna_title">
+                            </div>
+                            <div class="info">
+                                <span>글쓴이&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;일시</span>
+                            </div>
+                            <div class="content">
+                                <textarea placeholder="내용 입력" id="qna_content"></textarea>
+                            </div>
+
+                        </div>
+
+                        <div class="a_a_bt_wrap">
+                            <button type="button" class="on" id="question_update_borderBtn">수정</button>
+                            <button type="reset">취소</button>
+                        </div>
+                    </form>
+                </div>
+                <!--            <div class="modal-footer">-->
+                <!--                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>-->
+                <!--                <button type="button" class="btn btn-primary">저장하기</button>-->
+                <!--            </div>-->
+            </div>
+        </div>
+    </div>
+
+    <!--댓글 수정-->
+    <script>
+        {
+          //모달 요소 선택
+          const commentEditModal = document.querySelector("#commit-edit-modal");
+          //모달 이벤트 감지
+          commentEditModal.addEventListener("show.bs.modal", function (event) {
+            //1.트리거 버튼 선택
+            const triggerBtn = event.relatedTarget;
+
+            //2. 데이터 가져오기
+            const id = triggerBtn.getAttribute("data-bs-id");
+            const qna-title = triggerBtn.getAttribute("data-bs-qna-title");
+            const qna_content = triggerBtn.getAttribute("data-bs-qna-content");
+            const memberId = triggerBtn.getAttribute("data-bs-member-id");
+
+            //3. 수정 폼에 데이터 반영
+            document.querySelector("#qna_content").value = qna - content;
+            document.querySelector("#qna_title").value = qna_title;
+            document.querySelector("#edit-question-id").value = id;
+            document.querySelector("#edit-question-member-id").value = memberId;
+          });
+
+
+          {
+            //수정완료버튼 선택
+            const commentUpdateBtn = document.querySelector("#question_update_borderBtn");
+
+            //클릭 이벤트 처리
+            commentUpdateBtn.addEventListener("click", function () {
+              //수정 댓글 객체 생성
+              const comment = {
+                id: document.querySelector("#edit-comment-id").value,
+                qna- title: document.querySelector("#qna_title").value,
+                  qna - title: document.querySelector("#qna_title").value,
+                    memberid: document.querySelector("#edit-question-member-id").value
+            };
+            console.log(question);
+
+            //수정 REST API 호출
+            const url = "/questions/" + question.id;
+            fetch(url, {
+              method: "PATCH",  //PATCH요청
+              headers: {   //전송 데이터타입(JSON) 정보
+                "Content-type": "application/json"
+              },
+              body: JSON.stringify(question)  //question객체를 JSON 문자열로 변환 전송
+            }).then(response => {
+              //HTTP 응답 코드에 따른 메시지 출력
+              const msg = (response.ok) ? "댓글이 수정되었습니다." : "댓글 수정 실패!";
+              alert(msg);
+              //현재 페이지 새로 고침
+              window.location.reload();
+            });
+          });
+        }
+           }
+    </script>
+
+    <!--댓글 삭제-->
+    <script>
+        {
+          // 댓글 삭제 버튼
+          const commentDeleteBtns = document.querySelectorAll(".comment-delete-btn");
+
+          commentDeleteBtns.forEach(btn => {
+            btn.addEventListener("click", (event) => {
+              //이벤트 발생 요소 선택
+              const commentDeleteBtn = event.target;
+              //삭제 댓글 id 가져오기
+              const commentId = commentDeleteBtn.getAttribute("data-comment-id");
+              console.log("삭제 버튼 클릭: " + commentId + "번 댓글");
+
+              //삭제 REST API 호출
+              const url = "/comments/" + commentId;
+
+              fetch(url, {
+                method: "DELETE"
+              }).then(response => {
+                //댓글 삭제 실패 처리
+                if (!response.ok) {
+                  alert("댓글 삭제 실패");
+                  return;
+                }
+                //삭제 성공시 댓글을 화면에서 지우고 메시지 창 띄우기
+                const target = document.querySelector(`#comments-${commentId}`);
+
+                const msg = `${commentId}번 댓글을 삭제했습니다.`;
+                alert(msg);
+                //현재 페이지 새로 고침
+                window.location.reload();
+              });
+            });
+
+          });
+
+
+        }
+
+    </script>
+</body>
+
+</html>

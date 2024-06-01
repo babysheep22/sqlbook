@@ -1,3 +1,5 @@
+{{>layouts/header_admin}}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,7 +20,7 @@
        /* 왼쪽 메뉴창 부분 */
        #control_container {
          position: absolute;
-         top: 240px;
+         top: 450px;
          left: 600px;
        }
 
@@ -157,8 +159,8 @@
     <!-- 왼쪽 메뉴 부분 -->
     <div id="control_1">
         <a href="#">홈</a> >
-        <a href="#">관리자페이지</a> >
-        <a href="#">회원관리</a> >
+        <a href="/admin/AllBooks">관리자페이지</a> >
+        <a href="/AllMembers">회원관리</a> >
         <a href="#">개별 회원 조회</a>
     </div>
 
@@ -169,10 +171,10 @@
             <p>관리자페이지</p>
         </div>
         <div class="control_2_1">
-            <a href="#">상품관리</a>
+            <a href="/admin/AllBooks">상품관리</a>
         </div>
         <div class="control_2_1">
-            <a href="#">회원관리</a>
+            <a href="/AllMembers">회원관리</a>
         </div>
         <div class="control_2_1">
             <a href="#">리뷰관리</a>
@@ -217,36 +219,56 @@
             <tr>
                 <td colspan="3"><span
                         class="book_title">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{member_name}}</span>
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;(회원번호:&nbsp;&nbsp;{{id}})</span>
                 </td>
             </tr>
             <tr>
                 <td>&nbsp;<span>아이디:&nbsp</span> {{member_id}}</td>
-                <td>&nbsp;<span>이메일:&nbsp</span> {{member_mail}}</td>
-                <td>&nbsp;<span>닉네임:&nbsp</span> {{member_nickname}}</td>
+                <td>&nbsp;<span>가입일시:&nbsp</span> {{#createdDate}}{{createdDate}}{{/createdDate}}
+                    {{^createdDate}}N{{/createdDate}}</td>
+                <td>&nbsp;<span>수정일시:&nbsp</span> {{#modifiedDate}}{{modifiedDate}}{{/modifiedDate}}
+                    {{^modifiedDate}}N{{/modifiedDate}}</td>
             </tr>
             <tr>
+                <td>&nbsp;<span>닉네임:&nbsp</span> {{#member_nickname}}{{member_nickname}}{{/member_nickname}}
+                    {{^member_nickname}}N{{/member_nickname}}</td>
                 <td>&nbsp;<span>회원 연락처:&nbsp</span> {{member_phone}}</td>
                 <td>&nbsp;<span>추천인 ID:&nbsp</span>{{#recommend_id}}{{recommend_id}}{{/recommend_id}}
                     {{^recommend_id}}N{{/recommend_id}}</td>
             </tr>
 
             <tr>
+                <td>&nbsp;<span>이메일:&nbsp</span> {{#email}}{{email}}{{/email}}
+                    {{^email}}N{{/email}}</td>
                 <td>&nbsp;<span>우편번호:&nbsp</span>{{#postcode}}{{postcode}}{{/postcode}}
                     {{^postcode}}N{{/postcode}}</td>
                 <td>&nbsp;<span>회원 주소:&nbsp</span>{{#member_addr}}{{member_addr}}{{/member_addr}}
                     {{^member_addr}}N{{/member_addr}}</td>
+            </tr>
+            <tr>
                 <td>&nbsp;<span>회원 상세주소:&nbsp</span>{{#member_addr_2}}{{member_addr_2}}{{/member_addr_2}}
                     {{^member_addr_2}}N{{/member_addr_2}}</td>
+                <td>&nbsp;<span>회원 지번주소:&nbsp</span>{{#member_addr_3}}{{member_addr_3}}{{/member_addr_3}}
+                    {{^member_addr_3}}N{{/member_addr_3}}</td>
+                <td>&nbsp;<span>참고 항목:&nbsp</span>{{#member_message}}{{member_message}}{{/member_message}}
+                    {{^member_message}}N{{/member_message}}</td>
             </tr>
             <tr>
                 <td>&nbsp;<span>환불계좌은행:&nbsp</span>{{#bank_name}}{{bank_name}}{{/bank_name}}
                     {{^bank_name}}N{{/bank_name}}</td>
                 <td>&nbsp;<span>환불계좌번호:&nbsp</span>{{#bankAccount}}{{bankAccount}}{{/bankAccount}}
                     {{^bankAccount}}N{{/bankAccount}}</td>
+                <td>&nbsp;<span>예금주:&nbsp</span>{{#bankMaster}}{{bankMaster}}{{/bankMaster}}
+                    {{^bankMaster}}N{{/bankMaster}}</td>
             </tr>
             <tr>
                 <td>&nbsp;<span>이머니:&nbsp</span>{{#e_money}}{{e_money}}{{/e_money}}
                     {{^e_money}}N{{/e_money}}</td>
+                <td>&nbsp;<span>계좌 환불:&nbsp</span>{{#bankRefund}}{{bankRefund}}{{/bankRefund}}
+                    {{^bankRefund}}N{{/bankRefund}}</td>
+
+            </tr>
+            <tr>
                 <td>&nbsp;<span>사용자 권한:&nbsp</span>{{#member_role}}{{member_role}}{{/member_role}}
                     {{^member_role}}N{{/member_role}}</td>
                 <td>&nbsp;<span>적립금:&nbsp</span>{{#member_mileage}}{{member_mileage}}{{/member_mileage}}
